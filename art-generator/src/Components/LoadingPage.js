@@ -9,3 +9,19 @@ import React from "react";
  * or provide fun facts about the artistic process.
  * 
  */
+
+ class LoadingPage extends React.Component {
+
+    render() {
+        return(
+            <div>
+               
+            </div>
+            
+        )
+    } 
+
+
+}
+
+export default LoadingPage;

@@ -8,3 +8,19 @@ import React from "react";
  * Each prompt appears in different stage of the process.
  * 
  */
+
+ class Prompt extends React.Component {
+
+    render() {
+        return(
+            <div>
+               
+            </div>
+            
+        )
+    } 
+
+
+}
+
+export default Prompt;

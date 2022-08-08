@@ -10,3 +10,19 @@ import React from "react";
  * random words are selected to be shown.
  * 
  */
+
+ class HintCloud extends React.Component {
+
+    render() {
+        return(
+            <div>
+               
+            </div>
+            
+        )
+    } 
+
+
+}
+
+export default HintCloud;

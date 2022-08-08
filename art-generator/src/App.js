@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch, BrowserRouter } from 'react-router-dom';
+import { Route, Routes, BrowserRouter } from 'react-router-dom';
 
 import OpeningPage from './Components/OpeningPage';
 import DialoguePage from './Components/DialoguePage';
@@ -10,31 +10,30 @@ class App extends React.Component {
 
   //global states
   state = {
-
+    word: '[hello]'
   }
 
   render () {
     return(
       <BrowserRouter>
-        <Switch>
+        <Routes>
           <Route exact path='/'
-            render={() => (<OpeningPage appState={ this.state } />)}
+            element={<OpeningPage appState= {this.state}/>}
           />
 
-          <Route exact path='dialoguePage'
-            render={() => (<DialoguePage appState={ this.state } />)}
+          <Route exact path='/dialoguePage'
+            element={<DialoguePage appState= {this.state}/>}
           />
 
-          <Route exact path='resultsPage'
-            render={() => (<ResultPage appState={ this.state } />)}
+          <Route exact path='/resultsPage'
+            element={<ResultPage appState= {this.state}/>}
           />
 
-          <Route exact path='loadingPage'
-            render={() => (<LoadingPage appState={ this.state } />)}
+          <Route exact path='/loadingPage'
+            element={<LoadingPage appState= {this.state}/>}
           />
 
-
-        </Switch>
+        </Routes>
       </BrowserRouter>
     )
   }

@@ -7,3 +7,19 @@ import React from "react";
  * User can be emailed the result.
  * 
  */
+
+ class ResultPage extends React.Component {
+
+    render() {
+        return(
+            <div>
+               
+            </div>
+            
+        )
+    } 
+
+
+}
+
+export default ResultPage;
