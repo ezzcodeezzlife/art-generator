@@ -13,10 +13,12 @@ class OpeningPage extends React.Component {
     render() {
         return(
             <div>
-                <h1>Opening Page { this.props.appState.word }</h1>
+                <h1>Art Generator { this.props.appState.word }</h1>
+                <p>AI and human come together for an art journey</p>
+                <p>Create a new custom piece of art</p>
                 <Link to={'/dialoguePage'}>
                     <button>
-                        DialoguePage 
+                        Begin 
                     </button>
                 </Link>
             </div>
