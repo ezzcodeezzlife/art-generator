@@ -3,14 +3,15 @@ import { Route, Routes, BrowserRouter } from 'react-router-dom';
 
 import OpeningPage from './Components/OpeningPage';
 import DialoguePage from './Components/DialoguePage';
-import ResultPage from './Components/ResultPage';
 import LoadingPage from './Components/LoadingPage';
+import SelectionPage from './Components/SelectionPage';
 
 class App extends React.Component {
 
   //global states
   state = {
-    word: '[hello]'
+    word: '[hello]',
+    image: null
   }
 
   render () {
@@ -25,12 +26,12 @@ class App extends React.Component {
             element={<DialoguePage appState= {this.state}/>}
           />
 
-          <Route exact path='/resultsPage'
-            element={<ResultPage appState= {this.state}/>}
-          />
-
           <Route exact path='/loadingPage'
             element={<LoadingPage appState= {this.state}/>}
+          />
+          
+          <Route exact path='/selectionPage'
+            element={<SelectionPage appState= {this.state}/>}
           />
 
         </Routes>

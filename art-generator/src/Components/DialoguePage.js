@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from 'react-router-dom';
 
-
 /**
  * The dialogue window
  * 
@@ -29,7 +28,7 @@ import { Link } from 'react-router-dom';
             'material', 'emotion', 'content', 'style'
         ],
         query: [],
-        fButtonState: 'jinak'
+        fButtonState: 'Next',
     }
 
     incrementStage = () => {
@@ -37,12 +36,20 @@ import { Link } from 'react-router-dom';
         
         let currentStage = this.state.stage;
 
+        //return button appears after the increment button is first clicked
+        document.querySelector('#btn-previous-stage').style.display = 'block';
+
+        //enable the return button after the stage is larger than 1
+        if(currentStage >= 1) {
+            document.querySelector('#btn-previous-stage').disabled = false;
+        }
+
         //update forward button
         if (currentStage == this.state.stageNames.length - 1) {
             this.state.fButtonState = 'Results';
         } 
         else {
-            this.state.fButtonState = 'Submit';
+            this.state.fButtonState = 'Next';
         }
 
         //send user to results page
@@ -52,7 +59,15 @@ import { Link } from 'react-router-dom';
 
             this.props.appState.word = 'tested';
             // <Link to={'/loadingPage'}> </Link>
-            console.log(this.props.appState.word)
+        }
+
+        if(currentStage == this.state.stageNames.length + 2) {
+            //hide btn-next-stage
+            document.querySelector('#btn-next-stage').style.display = 'none';
+            //create result button
+
+            
+            
         }
 
         this.setState({stage: currentStage + 1});
@@ -63,38 +78,49 @@ import { Link } from 'react-router-dom';
         //decrease current stage by 1
         let currentStage = this.state.stage;
 
+        //disable the return button once the stage is 1
+        if(currentStage == 2) {
+            document.querySelector('#btn-previous-stage').disabled = true;
+        }
+
         //update forward button
         if (currentStage == this.state.stageNames.length + 1) {
             this.state.fButtonState = 'Results';
         } 
         else {
-            this.state.fButtonState = 'Submit';
+            this.state.fButtonState = 'Next';
         }
-
-        //TODO: if stage is 1 => hide button
 
         this.setState({stage: currentStage - 1})
     }
 
+
+
     render() {
+
         return(
             <div>
                <h1>Dialogue Page</h1>
                <p> Welcome to stage {this.state.stage}, {this.state.stageNames[this.state.stage - 1]}</p>
-                <input type='submit'
+                <input id="btn-previous-stage" type='submit'
                     onClick= { this.returnToPreviousStage }
                     value='Previous stage'
                 />
-                <input type='submit'
+                <input id="btn-next-stage" type='submit'
                     onClick= { this.incrementStage }
                     value = {this.state.fButtonState}
                 />
+
+                <Link id="btn-result" to={'/loadingPage'}>
+                    <button>
+                        Results 
+                    </button>
+                </Link>
                 
             </div>
             
         )
     } 
-
 
 }
 

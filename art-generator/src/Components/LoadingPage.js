@@ -1,5 +1,5 @@
 import React from "react";
-import loading from './Loading_icon.gif';
+import loading from './TestPhotos/Loading_icon.gif';
 const { Facts } = require('./dataFile.js');
 
 /***
@@ -21,10 +21,9 @@ const { Facts } = require('./dataFile.js');
     updateFact = () => {
         //every 5 seconds, update the fact
         setInterval(() => {
-            let randomFact = Facts.funFacts[Math.floor(Math.random() * Facts.funFact.length)];
+            let randomFact = Facts.funFacts[Math.floor(Math.random() * Facts.funFacts.length)];
+            this.setState({funFact: randomFact});
             this.state.funFact = randomFact;
-            console.log('change')
-            return randomFact;
         }, 5000)
 
     }
@@ -37,7 +36,8 @@ const { Facts } = require('./dataFile.js');
 
                <img src={loading}></img>
 
-               <h2> { this.updateFact } </h2>
+               <h2 onLoad = {this.updateFact()} > { this.state.funFact } </h2>
+
 
             </div>
             
