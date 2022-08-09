@@ -17,7 +17,7 @@ class SelectionPage extends React.Component {
     handleSelection = (event) => {
         //hide other images, keep only the one the user selected
 
-        if(event.target.id == 'img-Result-1') {
+        if(event.target.id === 'img-Result-1') {
             //hide image
             document.getElementById('img-Result-2').style.display = 'none';
             document.getElementById('img-Result-3').style.display = 'none';
@@ -27,7 +27,7 @@ class SelectionPage extends React.Component {
             document.getElementById('btn-Result-3').style.display = 'none';
             document.getElementById('btn-Result-4').style.display = 'none';
 
-        } else if(event.target.id == 'img-Result-2') {
+        } else if(event.target.id === 'img-Result-2') {
             document.getElementById('img-Result-1').style.display = 'none';
             document.getElementById('img-Result-3').style.display = 'none';
             document.getElementById('img-Result-4').style.display = 'none';
@@ -36,7 +36,7 @@ class SelectionPage extends React.Component {
             document.getElementById('btn-Result-3').style.display = 'none';
             document.getElementById('btn-Result-4').style.display = 'none';
 
-        } else if(event.target.id == 'img-Result-3') {
+        } else if(event.target.id === 'img-Result-3') {
             document.getElementById('img-Result-1').style.display = 'none';
             document.getElementById('img-Result-2').style.display = 'none';
             document.getElementById('img-Result-4').style.display = 'none';

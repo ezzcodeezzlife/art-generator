@@ -1,4 +1,5 @@
 import React from "react";
+import HintCloud from "./HintCloud";
 import { Link } from 'react-router-dom';
 
 /**
@@ -25,16 +26,21 @@ import { Link } from 'react-router-dom';
     state = {
         stage: 1,
         stageNames: [
-            'material', 'emotion', 'content', 'style'
+            'material', 'emotion', 'content', 'style', 'result'
         ],
         query: [],
-        fButtonState: 'Next',
     }
 
     incrementStage = () => {
-        //increase value of current stage by 1
+        //increase value of current stage by 1, and update the buttons accordingly
         
         let currentStage = this.state.stage;
+
+        /**
+         * Button to previous stage:
+         * is enabled only if the current stage is greater than 1,
+         * otherwise it is disabled. 
+         */
 
         //return button appears after the increment button is first clicked
         document.querySelector('#btn-previous-stage').style.display = 'block';
@@ -44,34 +50,33 @@ import { Link } from 'react-router-dom';
             document.querySelector('#btn-previous-stage').disabled = false;
         }
 
-        //update forward button
-        if (currentStage == this.state.stageNames.length - 1) {
-            this.state.fButtonState = 'Results';
-        } 
-        else {
-            this.state.fButtonState = 'Next';
-        }
+        /***
+         * Button to next stage:
+         * is enabled only if the current stage is less than last,
+         * at last stage is replaced by submit button which redirects to loading page.
+         * 
+         * Text field is emptied and value stored.
+         */
 
-        //send user to results page
-        if(this.state.fButtonState == 'Results') {
-
-            //TODO: update finished query into this.props.appState.word
-
-            this.props.appState.word = 'tested';
-            // <Link to={'/loadingPage'}> </Link>
-        }
-
-        if(currentStage == this.state.stageNames.length + 2) {
-            //hide btn-next-stage
+        //hide forward button, create a submit button
+        if(currentStage === this.state.stageNames.length - 1) {
+            //hide forward button
             document.querySelector('#btn-next-stage').style.display = 'none';
-            //create result button
 
-            
-            
+            //show submit button
+            document.querySelector('#btn-result').style.display = 'block';
         }
 
+        //get text from input field and store it in the query array
+        let input = document.querySelector('#dialogue-input').value;
+        //TODO: change to fit the correct structure
+        this.state.query.push(input);
+
+        //empty the input field
+        document.querySelector('#dialogue-input').value = '';
+
+        //increase stage by 1
         this.setState({stage: currentStage + 1});
-        
     }
 
     returnToPreviousStage = () => {
@@ -83,13 +88,16 @@ import { Link } from 'react-router-dom';
             document.querySelector('#btn-previous-stage').disabled = true;
         }
 
-        //update forward button
-        if (currentStage == this.state.stageNames.length + 1) {
-            this.state.fButtonState = 'Results';
-        } 
-        else {
-            this.state.fButtonState = 'Next';
+        //display correct forward button
+        if(currentStage != this.state.stageNames.length - 1) {
+            //hide submit button
+            document.querySelector('#btn-result').style.display = 'none';
+            //show forward button
+            document.querySelector('#btn-next-stage').style.display = 'block';
         }
+
+        //TODO: fill input field with the last value in the query array
+        document.querySelector('#dialogue-input').value = this.state.query[this.state.stage - 1];
 
         this.setState({stage: currentStage - 1})
     }
@@ -101,14 +109,21 @@ import { Link } from 'react-router-dom';
         return(
             <div>
                <h1>Dialogue Page</h1>
+
+                <HintCloud currentStage={this.state.stage}/>
+
                <p> Welcome to stage {this.state.stage}, {this.state.stageNames[this.state.stage - 1]}</p>
+
                 <input id="btn-previous-stage" type='submit'
                     onClick= { this.returnToPreviousStage }
                     value='Previous stage'
                 />
+
+                <input id="dialogue-input" type='text'></input>
+
                 <input id="btn-next-stage" type='submit'
                     onClick= { this.incrementStage }
-                    value = {this.state.fButtonState}
+                    value = 'Next'
                 />
 
                 <Link id="btn-result" to={'/loadingPage'}>

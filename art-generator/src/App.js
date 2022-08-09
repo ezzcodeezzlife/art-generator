@@ -11,7 +11,7 @@ class App extends React.Component {
   //global states
   state = {
     word: '[hello]',
-    image: null
+    image: null,
   }
 
   render () {
