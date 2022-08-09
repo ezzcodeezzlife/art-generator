@@ -7,9 +7,8 @@ var Facts = {
 
     emotions: ['light', 'peaceful', 'calm', 'serene', 'soothing', 'relaxed',
     'comforting', 'cosy', 'tranquil', 'quiet', 'delicate', 'subtle', 'mild', 'ethereal', 'elegant',
-    'tender', 'soft', 'light', 'bright', 'vibrant', 'dynamic', 'spirited',
-    'vivid', 'lively', 'energetic', 'colorful',
-    'joyful', 'romantic', 'expressive', 'rich', 'ecstatic', 'energized', 'zestful',
+    'tender', 'soft', 'light', 'bright', 'vibrant', 'dynamic', 'spirited','vivid', 'lively', 'energetic', 
+    'colorful','joyful', 'romantic', 'expressive', 'rich', 'ecstatic', 'energized', 'zestful',
     'passionate', 'hot', 'muted', 'bleak', 'funereal', 'somber', 'melancholic', 'mournful', 'gloomy',
     'dismal', 'sad', 'pale, washed-out','desaturated', 'grey', 'dull', 'dreary', 'depressing', 'weary', 'tired', 'dark', 
     'ominous', 'threatening','haunting', 'forbidding', 'gloomy', 'stormy', 'doom', 'apocalyptic','sinister', 'shadowy', 
@@ -20,14 +19,15 @@ var Facts = {
     'blocks','robust','defined','ornate','delicate','neat','precise','detailed','fine','elaborate','intricate','accurate',
     'meticulous','decorative','random','casual','spontaneous','uniform','offhand','experimental','improvisational','loose'],
 
-    looks: [ 'kaleidoscopic',
-    'psychedelic', 'saturated', 'minimalist', 'vaporwave', 'neon', 'futuristc','post-apocalyptic','gothic','fantasy','cyberpunk',
+    looks_techniques: [ 'kaleidoscopic', 'psychedelic', 'saturated', 'minimalist', 'vaporwave', 'neon', 'futuristic','post-apocalyptic','gothic','fantasy','cyberpunk',
     'cybernetic','sci-fi','steampunk','memphis','dieselpunk','industrial','afrofuturism','biopunk'],
 
     art_styles: ['cave paintings', 'ancient egyptian mural', 'byzantine','Renaissance','Baroque','Romanticism','Impressionism','Realism','Art Nouveau','Mannerism','Roccoco',
-    'Neoclassicism','Symbolist','Art deco', 'Abstract', 'Bauhaus','Cubism', 'Fauvism', 'Dada', 'Expressionism', 'Constructivism', 'Surrealism', 'Abstract Expressionism'],
+    'Neoclassicism','Symbolist','Art deco', 'Abstract', 'Bauhaus','Cubism', 'Fauvism', 'Dada', 'Expressionism', 'Constructivism', 'Surrealism', 'Abstract Expressionism',
+    'Modernism', 'religious', 'Ottoman'],
 
-    artists: ['Pablo Picasso', 'Salvador Dali', 'Keith Haring', 'Vincent van Gogh'],
+    artists: ['Pablo Picasso', 'Salvador Dali', 'Keith Haring', 'Vincent van Gogh', 'Joan Miro', 'Francis Bacon','Tanguy','Claude Monet','Paul Cezanne','Auguste Renoir',
+    'Félix Vallotton','Sandro Botticelli','Wassily Kandinsky'],
 
     //painting
 
@@ -35,12 +35,18 @@ var Facts = {
     , 'airbrush','photocollage','vector art','digital art', 'pencil drawing','pencil sketch','woodcut','charcoal sketch','cartoon','animation', 'comic style','etching', 'mural',
     'blueprint', 'botanical illustration', 'anatomical illustration','map','scientific diagram','voroni diagram','pixel art'],
 
-    content_painting: [''],
+    content_painting: ['landscape of mars', 'portrait of judge', 'still life of fruit', 'orange elephant in a forest','old-fashioned greenhouse', 'vintage can of pickles', 
+    'tower of Babel', 'secret human civilization inside a blooming flower'],
+
+    setting_painting: ['from a distance', 'during a sunset', 'in a poppy field at noon'],
 
     // sculpture
-    sculpture_types: ['bronze','marble','terracota','jade', 'gold', 'silver','ice carving', 'plastic','fiberglass','plant','sand','butter'],
+    sculpture_types: ['bronze','marble','terracota','jade', 'gold', 'silver','ice carving', 'plastic','fiberglass','plant','sand','butter', 'wood','glass','stone','metal',
+    'ceramic'],
     
-    content_sculpture: [''],
+    content_sculpture: ['warriors awaiting the battle', 'cup of eternal life','t-rex with short legs and long arms'],
+
+    
 
     
 
