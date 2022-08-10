@@ -17,11 +17,21 @@ import { Facts } from './dataFile';
     state = {
         NUM_FACTS: 10,
         INTERVAL_LENGTH: 3000,
-        hint_elements: []
+        hint_elements: [],
+        interval: null,
     }
 
     componentDidMount() {
         this.populateHints();
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.state.interval);
+        //remove para elements from the page    
+        this.state.hint_elements.forEach(element => {
+            element.remove();
+        });
+        
     }
 
     generateHints = (stage) => {
@@ -56,9 +66,8 @@ import { Facts } from './dataFile';
         //setup the elements for hints
         this.setupHints();
 
-        console.log(this.state.hint_elements);
         //change the hint cloud every INTERVAL_LENGTH milliseconds
-        setInterval(() => {
+        this.state.interval = setInterval(() => {
             //generate new hints
             let newHints = this.generateHints(this.props.currentStage);
             //replace text in existing hints
