@@ -2,6 +2,8 @@ import React from "react";
 import HintCloud from "./HintCloud";
 import { Link } from 'react-router-dom';
 
+const assembler = require('./Assembler_Obj')
+
 /**
  * The dialogue window
  * 
