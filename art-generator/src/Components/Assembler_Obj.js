@@ -5,18 +5,19 @@
 
 var Responses_Painting = {
 
-    medium: "painting",
+    medium: "",
 
-    content: [" of", ' ','an elephant', ' and ', 'houseplants'],//add new as ' and ' + 'houseplants
+    content: [],//add new as ' of ' + 'dragons' OR ' and ' + 'houseplants'
     
     setting: [], //add new as ' '+'in a park'
    
-   	emotion: [', ','mellow'],//add new as ', ' + 'grimm'
+   	emotion: [],//add new as ', ' + 'grimm'
   
-  	looks: [', ','biopunk'],//add new as ', ' + 'futuristic'
+  	looks: [],//add new as ', ' + 'futuristic'
     
-    style: [', in the style of ','Michelangelo']
+    style: []
     }
+
 
 var Responses_Sculpture = {}
 
@@ -43,7 +44,12 @@ function assembleResponse(Responses) {
 }
 
 function storeResponse(userInput, stage) {
-	if (stage == 1) {
+    /***
+     * This function stores the user input for the current stage into Responses_Painting object.
+     * userInput: input from the user for the current stage (string)
+     * stage: current stage id (integer)
+     */
+     if (stage == 1) {
     	Responses[Object.keys(Responses)[stage-1]] = userInput; }
 	else if (stage == 2 && userInput.length > 0) {
     	Responses[Object.keys(Responses)[stage-1]].push(' of ' + userInput);}
@@ -53,8 +59,4 @@ function storeResponse(userInput, stage) {
     	Responses[Object.keys(Responses)[stage-1]].push(', ' + userInput);}
   	else if (stage == 6 && userInput.length > 0) {
     	Responses[Object.keys(Responses)[stage-1]].push(', in the style of ' + userInput);} 
-   
-    let t = Object.values(Responses)[stage-1];
-
-	return t;
 }
