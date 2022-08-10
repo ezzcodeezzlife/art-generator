@@ -6,6 +6,8 @@ import DialoguePage from './Components/DialoguePage';
 import LoadingPage from './Components/LoadingPage';
 import SelectionPage from './Components/SelectionPage';
 
+import Home from './Components/Dalle/testDalle';
+
 class App extends React.Component {
 
   //global states
@@ -32,6 +34,10 @@ class App extends React.Component {
           
           <Route exact path='/selectionPage'
             element={<SelectionPage appState= {this.state}/>}
+          />
+
+          <Route exact path='/dalle'
+            element={<Home />}
           />
 
         </Routes>
