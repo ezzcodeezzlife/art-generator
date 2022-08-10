@@ -1,5 +1,5 @@
 /****
- * All the data we need
+ * Hint Cloud Data
  */
 
 var Facts = {
