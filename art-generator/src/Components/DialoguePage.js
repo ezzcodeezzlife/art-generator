@@ -26,7 +26,7 @@ import { Link } from 'react-router-dom';
     state = {
         stage: 1,
         stageNames: [
-            'material', 'emotion', 'content', 'style', 'result'
+            'emotions', 'structure_form', 'looks_techniques', 'art_styles', 'artists'
         ],
         query: [],
     }
@@ -110,7 +110,7 @@ import { Link } from 'react-router-dom';
             <div>
                <h1>Dialogue Page</h1>
 
-                <HintCloud currentStage={this.state.stage}/>
+                <HintCloud currentStage={this.state.stageNames[this.state.stage]}/>
 
                <p> Welcome to stage {this.state.stage}, {this.state.stageNames[this.state.stage - 1]}</p>
 

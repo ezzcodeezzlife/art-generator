@@ -18,6 +18,11 @@ const { Facts } = require('./dataFile.js');
         funFact: Facts.funFacts[0]
     }
 
+    componentDidMount() {
+        this.updateFact();
+
+    }
+
     updateFact = () => {
         //every 5 seconds, update the fact
         setInterval(() => {
@@ -36,7 +41,7 @@ const { Facts } = require('./dataFile.js');
 
                <img src={loading}></img>
 
-               <h2 onLoad = {this.updateFact()} > { this.state.funFact } </h2>
+               <h2> { this.state.funFact } </h2>
 
 
             </div>

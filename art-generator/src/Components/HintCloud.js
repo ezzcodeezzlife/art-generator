@@ -14,30 +14,65 @@ import { Facts } from './dataFile';
 
  class HintCloud extends React.Component {
 
-    populateHints = () => {
-        //figure out which stage the user is in
-        console.log(this.props.currentStage)
-        console.log(Facts.emotions[0])
-        //create a paragraph element for each hint
+    state = {
+        NUM_FACTS: 10,
+        INTERVAL_LENGTH: 3000,
+        hint_elements: []
+    }
+
+    componentDidMount() {
+        this.populateHints();
+    }
+
+    generateHints = (stage) => {
+        //gereate NUM_FACTS random hints from given stage
+        //create a <p> element for each hint
 
         // Shuffle array
-        const shuffled = Facts.emotions.sort(() => 0.5 - Math.random());
+        const shuffled = Facts[stage].sort(() => 0.5 - Math.random());
 
         // Get sub-array of first n elements after shuffled
-        let selected = shuffled.slice(0, 10);
+        let selected = shuffled.slice(0, this.state.NUM_FACTS);
 
-        for(let i = 0; i < selected.length; i++) {
+        return selected;
+    }
+
+    setupHints = () => {
+        //create the elements which will hold the hints
+        
+        let firstSet = this.generateHints(this.props.currentStage);
+        
+        for(let i = 0; i < firstSet.length; i++) {
             let para = document.createElement('p');
-            para.innerHTML = selected[i];
+            para.className = "hint";
+            para.innerHTML = firstSet[i];
+            this.state.hint_elements.push(para);
             document.querySelector('div').appendChild(para);
         }
+    }
+
+    populateHints = () => {
+
+        //setup the elements for hints
+        this.setupHints();
+
+        console.log(this.state.hint_elements);
+        //change the hint cloud every INTERVAL_LENGTH milliseconds
+        setInterval(() => {
+            //generate new hints
+            let newHints = this.generateHints(this.props.currentStage);
+            //replace text in existing hints
+            for(let i = 0; i < this.state.hint_elements.length; i++) {
+                this.state.hint_elements[i].innerHTML = newHints[i];
+            }
+        }, this.state.INTERVAL_LENGTH);
 
     }
 
     render() {
         return(
             <div>
-               <button onClick={this.populateHints}>Populate Hints</button>
+
             </div>
             
         )
