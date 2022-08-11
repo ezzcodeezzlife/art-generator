@@ -12,11 +12,13 @@ class DalleComponent extends React.Component {
     }
 
     getDalle2 = () => {
+
+        console.log(this.state.query);
         if(this.state.query != "" && this.state.token != "") {
             this.setState({loading: true});
             this.setState({error: false});
             
-            fetch(`/api/dalle2?k=${this.state.token}&q=${this.state.dallequery}`, {
+            fetch(`/api/dalle2?k=${this.state.token}&q=${this.state.query}`, {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json'
@@ -41,8 +43,8 @@ class DalleComponent extends React.Component {
     render() {
         return(
             <div>
-            <p>Testing creating images with Dalle</p>
-            <p>{this.props.text}</p>
+
+            <h3>{this.props.text}</h3>
             <input
                 id="query"
                 type="text"
