@@ -1,5 +1,5 @@
 import React from "react";
-import { Facts } from './dataFile';
+import { Facts, Prompts } from './dataFile';
 
 /***
  * Inspiration for the user
@@ -11,6 +11,8 @@ import { Facts } from './dataFile';
  * random words are selected to be shown.
  * 
  */
+
+//TODO: reset hint cloud with each stage change
 
  class HintCloud extends React.Component {
 
@@ -30,28 +32,41 @@ import { Facts } from './dataFile';
         //remove para elements from the page    
         this.state.hint_elements.forEach(element => {
             element.remove();
-        });
-        
+        });  
     }
 
-    generateHints = (stage) => {
+    getStage = (medium, stage) => {
+        if(medium !== "") {
+            let stageName = Prompts[medium].lookup[String(stage-1)];
+            return Facts[stageName];
+        } else {
+            let arr = [];
+            for(let i = 0; i < this.state.NUM_FACTS; i++) {
+                arr.push("");
+            }
+            return arr;
+        }
+
+    }
+
+    generateHints = () => {
         //gereate NUM_FACTS random hints from given stage
         //create a <p> element for each hint
 
         // Shuffle array
-        const shuffled = Facts[stage].sort(() => 0.5 - Math.random());
+        const shuffled = this.getStage(this.props.medium, this.props.stage ).sort(() => 0.5 - Math.random());
 
         // Get sub-array of first n elements after shuffled
         let selected = shuffled.slice(0, this.state.NUM_FACTS);
-
+        
         return selected;
     }
 
     setupHints = () => {
         //create the elements which will hold the hints
         
-        let firstSet = this.generateHints(this.props.currentStage);
-        
+        let firstSet = this.generateHints();
+
         for(let i = 0; i < firstSet.length; i++) {
             let para = document.createElement('p');
             para.className = "hint";
@@ -69,7 +84,7 @@ import { Facts } from './dataFile';
         //change the hint cloud every INTERVAL_LENGTH milliseconds
         this.state.interval = setInterval(() => {
             //generate new hints
-            let newHints = this.generateHints(this.props.currentStage);
+            let newHints = this.generateHints();
             //replace text in existing hints
             for(let i = 0; i < this.state.hint_elements.length; i++) {
                 this.state.hint_elements[i].innerHTML = newHints[i];

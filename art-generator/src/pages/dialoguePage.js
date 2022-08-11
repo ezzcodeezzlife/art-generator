@@ -121,7 +121,7 @@ const assembler = require('../Components/assembler_Obj')
                <h1>Dialogue Page</h1>
 
                 {/* TODO: update hint cloud */}
-                {/* <HintCloud currentStage={this.state.stageNames[this.state.stage]}/> */}
+                <HintCloud medium={this.state.medium} stage={this.state.stage}/>
 
                 <Prompt medium={this.state.medium} stage={this.state.stage}/>
 
