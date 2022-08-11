@@ -1,7 +1,6 @@
 {
   "/_app": "pages/_app.js",
-  "/_document": "pages/_document.js",
   "/_error": "pages/_error.js",
-  "/api/dalle2": "pages/api/dalle2.js",
-  "/dalleTest": "pages/dalleTest.js"
+  "/_document": "pages/_document.js",
+  "/dialoguePage": "pages/dialoguePage.js"
 }

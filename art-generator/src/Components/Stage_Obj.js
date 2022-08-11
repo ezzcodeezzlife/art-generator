@@ -11,9 +11,7 @@ var Stages = {
         stage2: ["text version one", "text version two", "text version three"],
         stage3: ["text version one", "text version two", "text version three"],
         stage4: ["text version one", "text version two", "text version three"],
-        stage5: ["text version one", "text version two", "text version three"],
-        stage6: ["text version one", "text version two", "text version three"],
-        stage7: ["text version one", "text version two", "text version three"],
+        stage5: ["text version one", "text version two", "text version three"]
     },
     sculpture: {},
     photography: {},

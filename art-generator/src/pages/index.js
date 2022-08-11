@@ -14,7 +14,10 @@ class OpeningPage extends React.Component {
         return(
             <div>
                 <h1>Art Generator</h1>
-                <p>AI and human come together for an art journey</p>
+                <p>Welcome to Art Generator, where everyone can create masterpieces 
+                    alike the great artists of history. Step-by-step, I will lead 
+                    you through an artist's creative journey, which will help you 
+                    create your own original artwork. From now on, anyone can be an artist!</p>
                 <p>Create a new custom piece of art</p>
                 <Link href={'/dialoguePage'}>
                     <button>

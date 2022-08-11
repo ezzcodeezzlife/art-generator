@@ -1,5 +1,6 @@
 import React from "react";
 import HintCloud from "../Components/hintCloud";
+import Prompt from "../Components/prompt";
 import Link from 'next/link';
 
 const assembler = require('../Components/assembler_Obj')
@@ -26,11 +27,13 @@ const assembler = require('../Components/assembler_Obj')
  class DialoguePage extends React.Component {
 
     state = {
-        stage: 1,
-        stageNames: [
-            'emotions', 'structure_form', 'looks_techniques', 'art_styles', 'artists'
-        ],
-        query: [],
+        stage: 0,
+        medium: "",
+        numStages: 7,
+        // stageNames: [
+        //     'emotions', 'structure_form', 'looks_techniques', 'art_styles', 'artists'
+        // ],
+        query: "",
     }
 
     incrementStage = () => {
@@ -61,7 +64,7 @@ const assembler = require('../Components/assembler_Obj')
          */
 
         //hide forward button, create a submit button
-        if(currentStage === this.state.stageNames.length - 1) {
+        if(currentStage === this.state.numStages - 2) {
             //hide forward button
             document.querySelector('#btn-next-stage').style.display = 'none';
 
@@ -72,10 +75,17 @@ const assembler = require('../Components/assembler_Obj')
         //get text from input field and store it in the query array
         let input = document.querySelector('#dialogue-input').value;
         //TODO: change to fit the correct structure
-        this.state.query.push(input);
+        this.setState({query: input});
 
         //empty the input field
         document.querySelector('#dialogue-input').value = '';
+
+        /***
+         * Assign medium
+         */
+        if(this.state.stage === 0) {
+            this.setState({medium: input});
+        }
 
         //increase stage by 1
         this.setState({stage: currentStage + 1});
@@ -91,7 +101,7 @@ const assembler = require('../Components/assembler_Obj')
         }
 
         //display correct forward button
-        if(currentStage != this.state.stageNames.length - 1) {
+        if(currentStage != this.state.numStages - 1) {
             //hide submit button
             document.querySelector('#btn-result').style.display = 'none';
             //show forward button
@@ -104,17 +114,16 @@ const assembler = require('../Components/assembler_Obj')
         this.setState({stage: currentStage - 1})
     }
 
-
-
     render() {
 
         return(
             <div>
                <h1>Dialogue Page</h1>
 
-                <HintCloud currentStage={this.state.stageNames[this.state.stage]}/>
+                {/* TODO: update hint cloud */}
+                {/* <HintCloud currentStage={this.state.stageNames[this.state.stage]}/> */}
 
-               <p> Welcome to stage {this.state.stage}, {this.state.stageNames[this.state.stage - 1]}</p>
+                <Prompt medium={this.state.medium} stage={this.state.stage}/>
 
                 <input id="btn-previous-stage" type='submit'
                     onClick= { this.returnToPreviousStage }
@@ -128,8 +137,8 @@ const assembler = require('../Components/assembler_Obj')
                     value = 'Next'
                 />
 
-                <Link id="btn-result" href={'/loadingPage'}>
-                    <button>
+                <Link  href={'/loadingPage'}>
+                    <button id="btn-result">
                         Results 
                     </button>
                 </Link>

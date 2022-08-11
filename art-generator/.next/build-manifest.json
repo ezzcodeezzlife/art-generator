@@ -25,10 +25,10 @@
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
-    "/dalleTest": [
+    "/dialoguePage": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/dalleTest.js"
+      "static/chunks/pages/dialoguePage.js"
     ]
   },
   "ampFirstPages": []
