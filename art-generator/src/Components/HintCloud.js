@@ -18,7 +18,7 @@ import { Facts, Prompts } from './dataFile';
 
     state = {
         NUM_FACTS: 10,
-        INTERVAL_LENGTH: 3000,
+        INTERVAL_LENGTH: 7000,
         hint_elements: [],
         interval: null,
     }
@@ -95,7 +95,7 @@ import { Facts, Prompts } from './dataFile';
 
     render() {
         return(
-            <div>
+            <div className="cloud">
 
             </div>
             

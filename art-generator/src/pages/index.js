@@ -13,6 +13,7 @@ class OpeningPage extends React.Component {
     render() {
         return(
             <div>
+
                 <h1>Art Generator</h1>
                 <p>Welcome to Art Generator, where everyone can create masterpieces 
                     alike the great artists of history. Step-by-step, I will lead 
@@ -20,7 +21,7 @@ class OpeningPage extends React.Component {
                     create your own original artwork. From now on, anyone can be an artist!</p>
                 <p>Create a new custom piece of art</p>
                 <Link href={'/dialoguePage'}>
-                    <button>
+                    <button className='btn'>
                         Begin 
                     </button>
                 </Link>

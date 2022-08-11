@@ -4,7 +4,11 @@
 
 var Facts = {
 
-    funFacts: ['fact one', 'fact two'],
+    funFacts: ['The first use of the term digital art was in the early 1980s when the pioneering digital artist Harold Cohen created AARON, a robotic machine designed to make large drawings on sheets of paper placed on the floor.', 
+    'One of the earliest electronic works is \'Oscillon 40\' dating from 1952. The artist, Ben Laposky, used an oscilloscope to manipulate electronic waves that appeared on the small fluorescent screen.',
+    'In the early 1960s, access to computers was limited and as a result, some of the first people to use computers creatively were computer scientists or mathematicians.',
+    'In the early 1970s, the Slade School of Art in  London etablished what was later called the \'Experimental and Computing Department\'.',
+    'Many artists who now work with computers incorporate this technology into their practice as just one tool amongst many that they may use interchangeably. Many no longer define themselves as practitioners of a specific media.'],
 
     emotions: ['light', 'peaceful', 'calm', 'serene', 'soothing', 'relaxed',
     'comforting', 'cosy', 'tranquil', 'quiet', 'delicate', 'subtle', 'mild', 'ethereal', 'elegant',
@@ -37,10 +41,12 @@ var Facts = {
     , 'airbrush','photocollage','vector art','digital art', 'pencil drawing','pencil sketch','woodcut','charcoal sketch','cartoon','animation', 'comic style','etching', 'mural',
     'blueprint', 'botanical illustration', 'anatomical illustration','map','scientific diagram','voroni diagram','pixel art'],
 
-    painting_content: ['landscape of mars', 'portrait of judge', 'still life of fruit', 'orange elephant in a forest','old-fashioned greenhouse', 'vintage can of pickles', 
-    'tower of Babel', 'secret human civilization inside a blooming flower'],
+    painting_content: ['landscape of mars', 'portrait of judge', 'still life of fruit', 'orange elephant','old-fashioned greenhouse', 'vintage can of pickles', 
+    'tower of Babel', 'secret human civilization inside a blooming flower', 'alien houseplant', 'electric sheep','bouquet of flowers', 'green family of dolphins', 
+    'group of old friends with straw hats', 'godess of Love'],
 
-    painting_setting: ['from a distance', 'during a sunset', 'in a poppy field at noon'],
+    painting_setting: ['from a distance', 'during a sunset', 'in a poppy field at noon', 'in the French countryside', 'by the sea', 'during the last day on Earth', 
+    'before the storm', 'in the poolclub', 'underwater', 'in a stadium', 'in the centre of the universe', 'in the middle of the ocean', 'in the middle of the desert', 'nowhere'],
 
     // sculpture
     sculpture_types: ['bronze','marble','terracota','jade', 'gold', 'silver','ice carving', 'plastic','fiberglass','plant','sand','butter', 'wood','glass','stone','metal',
@@ -74,7 +80,7 @@ var Prompts = {
         3: ['We know what we are focusing on, but what about everything all around. Where is this scene set? Is there even a setting? Maybe you are fine with what you’ve chosen. That is fine by me as well.'],
         4: ['Now that we know what is in the artwork, we also need to know how it will be depicted. Canvases will often radiate some energy - calming, energizing, they can even make you tired. This goes hand in hand with emotions. Artists will often want to communicate some sort of emotion through their art. This can come out softly - through colour tones and structure, but also explicitly - through dreadful expressions or symbolism. Think of emotions and energies you would want to convey through your artwork!'],
         5: ['We are getting close. There are endless styles in the world of art - these either help bring out the visuality of your scene, or better communicate the desired message. With my help, try to brainstorm styles, techinques and looks that will help shape your artwork into a truly personal masterpiece. Think about styles from history, but also also contemporary aesthetics. Perhaps you are a pioneer and don’t want to model yourself on any existing look, so this is not a must! '],
-        6: ['Most of us will be driven by outer inspiration, whill often take shape in a person or a group. Do you have an inspiration? Is there someone, or something that you admire and wish to follow in their footsteps? Perhaps you will want to finish you artwork off in the style of…']
+        6: ['Most of us will be driven by outer inspiration, which often take shape in a person or a group. Do you have an inspiration? Is there someone, or something that you admire and wish to follow in their footsteps? Perhaps you will want to finish you artwork off in the style of…']
     },
     sculpture: {
         lookup: [],

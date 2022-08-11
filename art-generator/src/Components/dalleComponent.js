@@ -45,7 +45,7 @@ class DalleComponent extends React.Component {
             <div>
 
             <h3>{this.props.text}</h3>
-            <input
+            <input className="input"
                 id="query"
                 type="text"
                 placeholder="Enter query"
@@ -56,7 +56,7 @@ class DalleComponent extends React.Component {
                     this.setState({query: e.target.value})}
                     }
             />
-            <button onClick={this.getDalle2}> Get Results! </button>
+            <button className="btn" onClick={this.getDalle2}> Get Results! </button>
 
             {this.state.error ? (
                 <p>

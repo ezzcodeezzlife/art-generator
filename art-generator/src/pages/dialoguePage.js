@@ -151,21 +151,21 @@ const { responses, assembleResponse, storeResponse, assembleFinalDalle } = requi
 
                 <Prompt medium={this.state.medium} stage={this.state.stage}/>
 
-                <input id="btn-previous-stage" type='submit'
+                <input className="btn" id="btn-previous-stage" type='submit'
                     onClick= { this.returnToPreviousStage }
                     value='Previous stage'
                 />
 
-                <input id="dialogue-input" type='text'></input>
+                <input className="input" id="dialogue-input" type='text'></input>
 
-                <input id="btn-next-stage" type='submit'
+                <input className="btn" id="btn-next-stage" type='submit'
                     onClick= { this.incrementStage }
                     value = 'Next'
                 />
 
                 
                 <Link href={'/loadingPage'}>
-                    <button onClick={this.finishAssembling} id="btn-result">
+                    <button className="btn" onClick={this.finishAssembling} id="btn-result">
                         Results 
                     </button>
                 </Link>

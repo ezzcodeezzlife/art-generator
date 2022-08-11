@@ -47,7 +47,7 @@ const { Facts } = require('../Components/dataFile.js');
 
                 <DalleComponent text={finalDalleAssembled.text}/>
 
-               <h2> { this.state.funFact } </h2>
+               <h3 id="fact"> { this.state.funFact } </h3>
 
             </div>
             
