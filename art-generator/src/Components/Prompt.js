@@ -11,7 +11,7 @@ import React from "react";
 
  class Prompt extends React.Component {
 
-    var prompt = {
+    prompt_text = {
         //lookup holds the hint cloud variable for each stage ordered by stage id
         lookup: ['painting_types', 'painting_content', 'painting_setting','emotions', 'looks_techniques','art_styles'],
         //holds the guiding prompt for each dialogue stage named by stage id (such that it can be called as prompt[stage])
