@@ -24,7 +24,7 @@ var responses = {
 };
 
 var finalDalleAssembled = {
-    text: "",
+    text: "ffsfsef",
 };
 
 function assembleFinalDalle(text) {

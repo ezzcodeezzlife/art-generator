@@ -2,6 +2,6 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/dialoguePage": "pages/dialoguePage.js",
-  "/loadingPage": "pages/loadingPage.js"
+  "/loadingPage": "pages/loadingPage.js",
+  "/api/dalle2": "pages/api/dalle2.js"
 }

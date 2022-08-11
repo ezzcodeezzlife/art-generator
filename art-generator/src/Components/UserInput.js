@@ -1,4 +1,5 @@
 import React from "react";
+const { finalDalleAssembled } = require('../Components/assembler_Obj');
 
 /**
  * 
@@ -8,10 +9,19 @@ import React from "react";
 
  class UserInput extends React.Component {
 
+    state = {
+        finalQuery: ""
+    }
+
+    componentDidMount() {
+        this.state.finalQuery = finalDalleAssembled.text;
+        console.log(this.state.finalQuery);
+    }
+
     render() {
         return(
             <div>
-               
+               <p>{this.state.finalQuery}</p>
             </div>
             
         )

@@ -2,6 +2,7 @@ import React from "react";
 import HintCloud from "../Components/hintCloud";
 import Prompt from "../Components/prompt";
 import Link from 'next/link';
+import { useState } from "react";
 
 const { responses, assembleResponse, storeResponse, assembleFinalDalle } = require('../Components/assembler_Obj');
 
@@ -133,6 +134,7 @@ const { responses, assembleResponse, storeResponse, assembleFinalDalle } = requi
             storeResponse(input, this.state.stage, responses, this.state.medium);
             
             let dalleInput = assembleResponse(responses, this.state.medium);
+            this.state.dalleInput = dalleInput;
             assembleFinalDalle(dalleInput);
 
         }
@@ -162,10 +164,7 @@ const { responses, assembleResponse, storeResponse, assembleFinalDalle } = requi
                 />
 
                 
-                <Link 
-                    href={'/loadingPage'}
-                    dalleInput={"testing"}
-                >
+                <Link href={'/loadingPage'}>
                     <button onClick={this.finishAssembling} id="btn-result">
                         Results 
                     </button>

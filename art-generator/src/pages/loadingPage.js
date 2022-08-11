@@ -1,5 +1,7 @@
 import React from "react";
 import loading from '../Components/TestPhotos/Loading_icon.gif';
+import DalleComponent from "../Components/dalleComponent";
+
 import Image from 'next/image';
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -41,26 +43,12 @@ const { Facts } = require('../Components/dataFile.js');
 
         return(
             <div>
-               <h1>Creating your new artwork</h1>
+               <h1>Creating your new artwork: </h1>
 
-               <Image src={loading} width={400} height={400}/>
+                <DalleComponent text={finalDalleAssembled.text}/>
 
                <h2> { this.state.funFact } </h2>
-                
-                <p>final: {finalDalleAssembled.text}</p>
 
-
-               <Link id="btn-result" href={'/selectionPage'}>
-                    <button>
-                        Results 
-                    </button>
-                </Link>
-               
-               <Link id="btn-result" href={'/dalleTest'}>
-                    <button>
-                        Test Dalle 
-                    </button>
-                </Link>
             </div>
             
         )
