@@ -2,6 +2,9 @@ import React from "react";
 import loading from '../Components/TestPhotos/Loading_icon.gif';
 import Image from 'next/image';
 import Link from "next/link";
+import { useRouter } from "next/router";
+
+const { finalDalleAssembled } = require('../Components/assembler_Obj');
 const { Facts } = require('../Components/dataFile.js');
 
 /***
@@ -22,7 +25,6 @@ const { Facts } = require('../Components/dataFile.js');
 
     componentDidMount() {
         this.updateFact();
-
     }
 
     updateFact = () => {
@@ -35,8 +37,8 @@ const { Facts } = require('../Components/dataFile.js');
 
     }
 
+    render() {   
 
-    render() {
         return(
             <div>
                <h1>Creating your new artwork</h1>
@@ -44,6 +46,9 @@ const { Facts } = require('../Components/dataFile.js');
                <Image src={loading} width={400} height={400}/>
 
                <h2> { this.state.funFact } </h2>
+                
+                <p>final: {finalDalleAssembled.text}</p>
+
 
                <Link id="btn-result" href={'/selectionPage'}>
                     <button>

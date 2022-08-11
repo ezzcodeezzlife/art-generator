@@ -1,7 +1,6 @@
 import React from "react";
 
 import { Prompts } from "./dataFile";
-import { HintCloud } from '../Components/hintCloud';
 
 /**
  * 
@@ -31,7 +30,6 @@ import { HintCloud } from '../Components/hintCloud';
         }
 
     }
-    
 
     render() {
         const { medium, stage } = this.props;

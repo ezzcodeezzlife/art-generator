@@ -3,7 +3,7 @@ import HintCloud from "../Components/hintCloud";
 import Prompt from "../Components/prompt";
 import Link from 'next/link';
 
-const assembler = require('../Components/assembler_Obj')
+const { responses, assembleResponse, storeResponse, assembleFinalDalle } = require('../Components/assembler_Obj');
 
 /**
  * The dialogue window
@@ -24,16 +24,18 @@ const assembler = require('../Components/assembler_Obj')
  * 
  */
 
+//TODO: show response, as it is being assembled, on page
+//TODO: check format of input - e.g. 400 character limit
+//TODO: add final user input to responses before moving to loading page
+
  class DialoguePage extends React.Component {
 
     state = {
         stage: 0,
         medium: "",
         numStages: 7,
-        // stageNames: [
-        //     'emotions', 'structure_form', 'looks_techniques', 'art_styles', 'artists'
-        // ],
         query: "",
+        dalleInput: "",
     }
 
     incrementStage = () => {
@@ -77,8 +79,7 @@ const assembler = require('../Components/assembler_Obj')
         //TODO: change to fit the correct structure
         this.setState({query: input});
 
-        //empty the input field
-        document.querySelector('#dialogue-input').value = '';
+        
 
         /***
          * Assign medium
@@ -86,6 +87,17 @@ const assembler = require('../Components/assembler_Obj')
         if(this.state.stage === 0) {
             this.setState({medium: input});
         }
+
+        /****
+         * Feed input to assembler
+         */
+        if(this.state.stage !== 0) {
+            let userInput = document.querySelector('#dialogue-input').value;
+            storeResponse(userInput, this.state.stage, responses, this.state.medium);
+        }
+        
+        //empty the input field
+        document.querySelector('#dialogue-input').value = '';
 
         //increase stage by 1
         this.setState({stage: currentStage + 1});
@@ -114,6 +126,18 @@ const assembler = require('../Components/assembler_Obj')
         this.setState({stage: currentStage - 1})
     }
 
+    finishAssembling = () => {
+        //get text from final input stage and assemble it into final query for dalle
+        if(this.state.stage == this.state.numStages - 1) {
+            let input = document.querySelector('#dialogue-input').value;
+            storeResponse(input, this.state.stage, responses, this.state.medium);
+            
+            let dalleInput = assembleResponse(responses, this.state.medium);
+            assembleFinalDalle(dalleInput);
+
+        }
+    }
+
     render() {
 
         return(
@@ -137,8 +161,12 @@ const assembler = require('../Components/assembler_Obj')
                     value = 'Next'
                 />
 
-                <Link  href={'/loadingPage'}>
-                    <button id="btn-result">
+                
+                <Link 
+                    href={'/loadingPage'}
+                    dalleInput={"testing"}
+                >
+                    <button onClick={this.finishAssembling} id="btn-result">
                         Results 
                     </button>
                 </Link>
