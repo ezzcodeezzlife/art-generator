@@ -27,7 +27,7 @@ const { responses, assembleResponse, storeResponse, assembleFinalDalle } = requi
 
 //TODO: show response, as it is being assembled, on page
 //TODO: check format of input - e.g. 400 character limit
-//TODO: add final user input to responses before moving to loading page
+//TODO: update stage names of h1 from dataFile instead of here 
 
  class DialoguePage extends React.Component {
 
@@ -37,6 +37,9 @@ const { responses, assembleResponse, storeResponse, assembleFinalDalle } = requi
         numStages: 7,
         query: "",
         dalleInput: "",
+
+        //TODO: update stage names of h1 from dataFile instead of here 
+        stage_names: ['Painting Types', 'Painting Content', 'Painting Setting','Emotions', 'Looks and Techniques','Art Styles'],
     }
 
     incrementStage = () => {
@@ -144,7 +147,8 @@ const { responses, assembleResponse, storeResponse, assembleFinalDalle } = requi
 
         return(
             <div>
-               <h1>Dialogue Page</h1>
+               <h1> {this.state.stage === 0 ? 'Select a Medium' : null}
+                { this.state.stage > 0 ? this.state.stage_names[this.state.stage - 1] : null}</h1>
 
                 {/* TODO: update hint cloud */}
                 <HintCloud medium={this.state.medium} stage={this.state.stage}/>

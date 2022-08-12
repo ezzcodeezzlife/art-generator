@@ -1,10 +1,5 @@
 import React from "react";
-import loading from '../Components/TestPhotos/Loading_icon.gif';
 import DalleComponent from "../Components/dalleComponent";
-
-import Image from 'next/image';
-import Link from "next/link";
-import { useRouter } from "next/router";
 
 const { finalDalleAssembled } = require('../Components/assembler_Obj');
 const { Facts } = require('../Components/dataFile.js');
@@ -35,7 +30,7 @@ const { Facts } = require('../Components/dataFile.js');
             let randomFact = Facts.funFacts[Math.floor(Math.random() * Facts.funFacts.length)];
             this.setState({funFact: randomFact});
             this.state.funFact = randomFact;
-        }, 5000)
+        }, 8000)
 
     }
 

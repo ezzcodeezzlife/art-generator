@@ -3,5 +3,5 @@
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
   "/loadingPage": "pages/loadingPage.js",
-  "/": "pages/index.js"
+  "/api/dalle2": "pages/api/dalle2.js"
 }

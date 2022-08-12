@@ -104,6 +104,7 @@ p {
   padding-left: 2%;
   font-weight: 200;
   animation: fadeIn 1s;
+  cursor: crosshair;
 }
 
 .hint:hover {
@@ -139,6 +140,7 @@ code {
   margin-top: 3rem;
   bottom: 1rem;
   max-width: 70%;
+  font-weight: 300;
 }
 
 @keyframes fadeIn {
@@ -161,7 +163,7 @@ code {
   text-decoration: none;
   border-radius: 10px;
   transition: color 0.15s ease, border-color 0.15s ease;
-  max-width: 250px;
+  max-width: 260px;
 }
 
 .imgPreview {

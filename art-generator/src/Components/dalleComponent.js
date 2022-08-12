@@ -1,5 +1,4 @@
 import React from "react";
-import { useState } from 'react';
 
 class DalleComponent extends React.Component {
 
@@ -8,12 +7,12 @@ class DalleComponent extends React.Component {
         query: "",
         result: [],
         loading: false,
-        error: false
+        error: false,
+        result_provided: false,
     }
 
     getDalle2 = () => {
 
-        console.log(this.state.query);
         if(this.state.query != "" && this.state.token != "") {
             this.setState({loading: true});
             this.setState({error: false});
@@ -28,6 +27,7 @@ class DalleComponent extends React.Component {
                 .then((data) => {
                     this.setState({result: data.result});
                     this.setState({loading: false});
+                    this.setState({result_provided: true});
                 })
                 .catch((err) => {
                     console.log(err);
@@ -45,22 +45,40 @@ class DalleComponent extends React.Component {
             <div>
 
             <h3>{this.props.text}</h3>
-            <input className="input"
-                id="query"
-                type="text"
-                placeholder="Enter query"
-                value={this.state.query}
-                onChange={(e) => {
-                    console.log(e.target.value);
-                    this.setState({token: 'sess-H3CXbJsrbAYlqNsCh17fEdVqEbrkI9HYIrZrNyeZ'})
-                    this.setState({query: e.target.value})}
-                    }
-            />
-            <button className="btn" onClick={this.getDalle2}> Get Results! </button>
+            {
+                //hide the input field after the query is submitted and loading
 
-            {this.state.error ? (
+                this.state.loading == false && this.state.error == false && this.state.result_provided == false ? 
+                <input className="input"
+                    id="query"
+                    type="text"
+                    placeholder={this.props.text}
+                    value={this.state.query}
+                    onChange={(e) => {
+                        this.setState({token: 'sess-H3CXbJsrbAYlqNsCh17fEdVqEbrkI9HYIrZrNyeZ'})
+                        this.setState({query: e.target.value})}
+                        }
+                /> : null
+            }
+            
+            {
+                //hide the Get Result button after the query has been sent
+
+                this.state.loading == false && this.state.error == false && this.state.result_provided == false ?
+                <button className="btn" onClick={this.getDalle2}> Get Results! </button>
+                : null
+            }
+
+           {/* {
+                //TODO: change background color one the results are provided (this code is not working)
+                this.state.result_provided === true ? 
+                document.querySelector('body').style.backgroundColor = '#f5f5f5' : null
+           }  */}
+
+            {
+                this.state.error ? (
                 <p>
-                    something went wrong lol
+                    your query could not be processed at this time
                 </p>
             ) : (<></>)}
 

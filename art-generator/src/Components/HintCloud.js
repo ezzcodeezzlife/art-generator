@@ -1,4 +1,5 @@
 import React from "react";
+import { isElementOfType } from "react-dom/test-utils";
 import { Facts, Prompts } from './dataFile';
 
 /***
@@ -19,8 +20,11 @@ import { Facts, Prompts } from './dataFile';
     state = {
         NUM_FACTS: 10,
         INTERVAL_LENGTH: 7000,
+        STAGE_INTERVAL_LENGTH: 1000,
+        current_stage: 0,
         hint_elements: [],
-        interval: null,
+        hint_interval: null,
+        stage_interval: null,
     }
 
     componentDidMount() {
@@ -53,6 +57,7 @@ import { Facts, Prompts } from './dataFile';
         //gereate NUM_FACTS random hints from given stage
         //create a <p> element for each hint
 
+        this.state.current_stage = this.props.stage;
         // Shuffle array
         const shuffled = this.getStage(this.props.medium, this.props.stage ).sort(() => 0.5 - Math.random());
 
@@ -74,15 +79,37 @@ import { Facts, Prompts } from './dataFile';
             this.state.hint_elements.push(para);
             document.querySelector('div').appendChild(para);
         }
+
+        this.state.hint_elements.forEach(element => {
+            element.addEventListener("click", () => {
+                document.querySelector("#dialogue-input").value = element.innerHTML;
+            });
+        })
+    }
+
+    checkStageChange = () => {
+        //every X miliseconds, check if the stage has changed
+        this.state.stage_interval = setInterval(() => {
+            if(this.state.current_stage != this.props.stage) {
+                
+                let newHints = this.generateHints();
+                //replace text in existing hints
+                for(let i = 0; i < this.state.hint_elements.length; i++) {
+                    this.state.hint_elements[i].innerHTML = newHints[i];
+                }
+            }
+        }, this.state.STAGE_INTERVAL_LENGTH)
+
     }
 
     populateHints = () => {
 
         //setup the elements for hints
         this.setupHints();
+        this.checkStageChange();
 
         //change the hint cloud every INTERVAL_LENGTH milliseconds
-        this.state.interval = setInterval(() => {
+        this.state.hint_interval = setInterval(() => {
             //generate new hints
             let newHints = this.generateHints();
             //replace text in existing hints
