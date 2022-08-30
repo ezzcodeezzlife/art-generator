@@ -29,6 +29,11 @@
       "static/chunks/webpack.js",
       "static/chunks/main.js",
       "static/chunks/pages/dialoguePage.js"
+    ],
+    "/loadingPage": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/loadingPage.js"
     ]
   },
   "ampFirstPages": []

@@ -25,8 +25,10 @@ import { Prompts } from "./dataFile";
 
         } else if(medium === "sculpture") {
             //depending on the stage, return the appropriate text
+            return Prompts.sculpture[stage];
         } else if(medium === "photography") {
             //depending on the stage, return the appropriate text
+            return Prompts.photography[stage];
         }
 
     }

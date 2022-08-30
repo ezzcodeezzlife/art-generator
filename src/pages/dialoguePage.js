@@ -39,7 +39,12 @@ const { responses, assembleResponse, storeResponse, assembleFinalDalle } = requi
         dalleInput: "",
 
         //TODO: update stage names of h1 from dataFile instead of here 
-        stage_names: ['Painting Types', 'Painting Content', 'Painting Setting','Emotions', 'Looks and Techniques','Art Styles'],
+        stage_names: { 
+            painting: ['Painting Types', 'Painting Content', 'Painting Setting','Emotions', 'Looks and Techniques','Art Styles'],
+            sculpture: ['Sculpture Type','Sculpture Content', 'Forms', 'Emotions', 'Looks', 'Art Styles'],
+            photography: ['Photo Content', 'Photo Setting', 'Camera Angle', 'Camera Settings', 'Lighting', 'Emotions']
+
+        }
     }
 
     incrementStage = () => {
@@ -148,7 +153,7 @@ const { responses, assembleResponse, storeResponse, assembleFinalDalle } = requi
         return(
             <div>
                <h1> {this.state.stage === 0 ? 'Select a Medium' : null}
-                { this.state.stage > 0 ? this.state.stage_names[this.state.stage - 1] : null}</h1>
+                { this.state.stage > 0 ? this.state.stage_names[this.state.medium][this.state.stage - 1] : null}</h1>
 
                 {/* TODO: update hint cloud */}
                 <HintCloud medium={this.state.medium} stage={this.state.stage}/>

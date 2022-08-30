@@ -89,21 +89,21 @@ var Prompts = {
     },
     sculpture: {
         lookup: ['sculpture_types', 'sculpture_content', 'sculpture_forms', 'emotions', 'structure_looks', 'art_styles'],
-        1: [],
-        2: [],
-        3: [],
-        4: [],
-        5: [],
-        6: []
+        1: ['sculpture stage 1 description'],
+        2: ['sculpture stage 2 description'],
+        3: ['sculpture stage 3 description'],
+        4: ['sculpture stage 4 description'],
+        5: ['sculpture stage 5 description'],
+        6: ['sculpture stage 6 description']
     },
     photography: {
         lookup: ['photo_content', 'photo_setting', 'camera_angles', 'camera_settings', 'lighting', 'emotions'],
-        1: [],
-        2: [],
-        3: [],
-        4: [],
-        5: [],
-        6: []
+        1: ['photography stage 1 description'],
+        2: ['photography stage 2 description'],
+        3: ['photography stage 3 description'],
+        4: ['photography stage 4 description'],
+        5: ['photography stage 5 description'],
+        6: ['photography stage 6 description']
     }
 }
 

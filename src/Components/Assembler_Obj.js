@@ -109,11 +109,11 @@ function storeResponse(userInput, stage, responses, medium) {
     else if(medium === "sculpture") {
         if (stage == 1) 
         {
-            responses[medium][Object.keys(responses[medium])[stage-1]].push(userInput + ' sculpture of'); 
+            responses[medium][Object.keys(responses[medium])[stage-1]].push(userInput + ' sculpture'); 
         }
         else if (stage == 2 && userInput.length > 0) 
         {
-            responses[medium][Object.keys(responses[medium])[stage-1]].push(' ' + userInput);
+            responses[medium][Object.keys(responses[medium])[stage-1]].push(' of ' + userInput);
         }
         else if ((stage == 3 || stage == 4 || stage == 5) && userInput.length > 0) 
         {
