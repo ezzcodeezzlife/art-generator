@@ -19,7 +19,7 @@ var Facts = {
     'ominous', 'threatening','haunting', 'forbidding', 'gloomy', 'stormy', 'doom', 'apocalyptic','sinister', 'shadowy', 
     'ghostly', 'unnerving', 'harrowing', 'dreadful', 'frightful', 'shocking', 'terror', 'hideous', 'ghastly', 'terrifying'],
 
-    structure_form: ['swirling','organic','flowing','turbulent','distorted','uneven','lush','chaotic','monumental','rigorous',
+    structure_looks: ['swirling','organic','flowing','turbulent','distorted','uneven','lush','chaotic','monumental','rigorous',
     'imposing','geometric','ordered','angular','straight','rhythmic','composed','unified','harmonic','manmade','minimalist',
     'blocks','robust','defined','ornate','delicate','neat','precise','detailed','fine','elaborate','intricate','accurate',
     'meticulous','decorative','random','casual','spontaneous','uniform','offhand','experimental','improvisational','loose'],
@@ -50,14 +50,19 @@ var Facts = {
 
     // sculpture
     sculpture_types: ['bronze','marble','terracota','jade', 'gold', 'silver','ice carving', 'plastic','fiberglass','plant','sand','butter', 'wood','glass','stone','metal',
-    'ceramic'],
+    'ceramic', 'clay', 'wax', 'rubber', 'plaster', 'ivory', 'fabric'],
     
-    content_sculpture: ['warriors awaiting the battle', 'cup of eternal life','t-rex with short legs and long arms'],
+    sculpture_content: ['warriors awaiting the battle', 'cup of eternal life','t-rex with short legs and long arms'],
 
+    sculpture_techniques: ['carved', 'modeled', 'molded', 'cast', 'wrought', 'welded', 'sewn', 'assembled', 'shaped', 'combined', 'kinetic'],
+
+    sculpture_forms: ['lit from above', 'smooth texture', 'rough texture', 'large scale', 'miniature'],
     
     //photography
 
-    content_photo: [''],
+    photo_content: ['flying birds', 'wild animals', 'waterfalls', 'exterior of a family house', 'ministry of truth'],
+
+    photo_setting: ['in the savanna', 'on a city square', 'in London', 'on a staircase'],
 
     camera_angles: ['extreme close-up', 'close-up', 'medium-shot', 'long-shot', 'wide-shot', 'overhead view', 'low angle', 'aerial view','tilted frame'],
 
@@ -83,26 +88,24 @@ var Prompts = {
         6: ['Most of us will be driven by outer inspiration, which often take shape in a person or a group. Do you have an inspiration? Is there someone, or something that you admire and wish to follow in their footsteps? Perhaps you will want to finish you artwork off in the style of…']
     },
     sculpture: {
-        lookup: [],
-        1: [],
-        2: [],
-        3: [],
-        4: [],
-        5: [],
-        6: []
+        lookup: ['sculpture_types', 'sculpture_content', 'sculpture_forms', 'emotions', 'structure_looks', 'art_styles'],
+        1: ['sculpture stage 1 description'],
+        2: ['sculpture stage 2 description'],
+        3: ['sculpture stage 3 description'],
+        4: ['sculpture stage 4 description'],
+        5: ['sculpture stage 5 description'],
+        6: ['sculpture stage 6 description']
     },
     photography: {
-        lookup: [],
-        1: [],
-        2: [],
-        3: [],
-        4: [],
-        5: [],
-        6: []
+        lookup: ['photo_content', 'photo_setting', 'camera_angles', 'camera_settings', 'lighting', 'emotions'],
+        1: ['photography stage 1 description'],
+        2: ['photography stage 2 description'],
+        3: ['photography stage 3 description'],
+        4: ['photography stage 4 description'],
+        5: ['photography stage 5 description'],
+        6: ['photography stage 6 description']
     }
 }
 
 module.exports = { Facts, Prompts };
-
-
 

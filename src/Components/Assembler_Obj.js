@@ -18,9 +18,33 @@ var responses = {
         style: []
     },
 
-    sculpture: {},
+    sculpture: {
+        type: [], //add new as 'bronze'
 
-    photography: {},
+        content: [], //add new as ' sculpture of ' + 'dragons'
+        
+        form: [], //add new as ', ' + 'organic'
+    
+        emotion: [],//add new as ', ' + 'expressive'
+    
+        looks: [],//add new as ', ' + 'lit from above'
+        
+        style: []
+    },
+
+    photography: {
+        content: [], // add new as 'A photograph of ' + 'alien cactus'
+
+        setting: [], // add new as ' ' + 'in ancient city ruins'
+
+        camera_angle: [], //add new as ', ' + 'close-up shot'
+
+        camera_settings: [], //add new as ', ' + 'polaroid'
+
+        lighting: [], //add new as ', ' + 'golden hour'
+
+        emotion:[] //add new as ', ' + 'vital'
+    },
 };
 
 var finalDalleAssembled = {
@@ -82,6 +106,39 @@ function storeResponse(userInput, stage, responses, medium) {
         } 
     }
     
+    else if(medium === "sculpture") {
+        if (stage == 1) 
+        {
+            responses[medium][Object.keys(responses[medium])[stage-1]].push(userInput + ' sculpture'); 
+        }
+        else if (stage == 2 && userInput.length > 0) 
+        {
+            responses[medium][Object.keys(responses[medium])[stage-1]].push(' of ' + userInput);
+        }
+        else if ((stage == 3 || stage == 4 || stage == 5) && userInput.length > 0) 
+        {
+            responses[medium][Object.keys(responses[medium])[stage-1]].push(', ' + userInput);
+        }
+        else if (stage == 6 && userInput.length > 0) 
+        {
+            responses[medium][Object.keys(responses[medium])[stage-1]].push(', in the style of ' + userInput);
+        } 
+    }
+
+    else if(medium === "photography") {
+        if (stage == 1) 
+        {
+            responses[medium][Object.keys(responses[medium])[stage-1]].push('A photograph of ' + userInput); 
+        }
+        else if (stage == 2 && userInput.length > 0) 
+        {
+            responses[medium][Object.keys(responses[medium])[stage-1]].push(' ' + userInput);
+        }
+        else if ((stage == 3 || stage == 4 || stage == 5 || stage == 6) && userInput.length > 0) 
+        {
+            responses[medium][Object.keys(responses[medium])[stage-1]].push(', ' + userInput);
+        }
+    }
     
 }
 
