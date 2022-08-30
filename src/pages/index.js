@@ -25,6 +25,11 @@ class OpeningPage extends React.Component {
                         Begin 
                     </button>
                 </Link>
+
+                {/* Testing MongoDB */}
+                <button type="button" onClick={() => handlePost()}>
+                        Test MongoDB
+                </button>
             </div>
                 
         )
