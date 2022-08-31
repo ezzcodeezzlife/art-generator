@@ -39,9 +39,9 @@ import { Facts, Prompts } from './dataFile';
         });  
     }
 
-    getStage = (medium, stage) => {
+    getStage = (medium, stage,language) => {
         if(medium !== "") {
-            let stageName = Prompts[medium].lookup[String(stage-1)];
+            let stageName = Prompts[language][medium].lookup[String(stage-1)];
             return Facts[stageName];
         } else {
             let arr = [];
@@ -59,7 +59,7 @@ import { Facts, Prompts } from './dataFile';
 
         this.state.current_stage = this.props.stage;
         // Shuffle array
-        const shuffled = this.getStage(this.props.medium, this.props.stage ).sort(() => 0.5 - Math.random());
+        const shuffled = this.getStage(this.props.medium, this.props.stage, this.props.language ).sort(() => 0.5 - Math.random());
 
         // Get sub-array of first n elements after shuffled
         let selected = shuffled.slice(0, this.state.NUM_FACTS);

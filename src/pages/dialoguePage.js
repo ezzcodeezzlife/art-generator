@@ -37,13 +37,28 @@ const { responses, assembleResponse, storeResponse, assembleFinalDalle } = requi
         numStages: 7,
         query: "",
         dalleInput: "",
+        language: 'ENG',
 
         //TODO: update stage names of h1 from dataFile instead of here 
-        stage_names: { 
+        stage_names: {
+            ENG: { 
             painting: ['Painting Types', 'Painting Content', 'Painting Setting','Emotions', 'Looks and Techniques','Art Styles'],
             sculpture: ['Sculpture Type','Sculpture Content', 'Forms', 'Emotions', 'Looks', 'Art Styles'],
             photography: ['Photo Content', 'Photo Setting', 'Camera Angle', 'Camera Settings', 'Lighting', 'Emotions']
+            },
 
+            CZ: { 
+                painting: ['Typy malby', 'Obsah malby', 'Prostředí malby','Emoce', 'Vzhled a technika','Umělecké styly'],
+                sculpture: ['Typ sochy', 'Obsah sochy', 'Formy', 'Emoce', 'Vzhled', 'Umělecké styly'],
+                photography: ['Photo Content', 'Photo Setting', 'Camera Angle', 'Camera Settings', 'Lighting', 'Emotions']
+
+            },
+            DE: { 
+                painting: ['Malarten', 'Malinhalt', 'Maleinstellung', 'Emotionen', 'Looks und Techniken', 'Kunststile'],
+                sculpture: ['Sculpture Type','Sculpture Content', 'Forms', 'Emotions', 'Looks', 'Art Styles'],
+                photography: ['Photo Content', 'Photo Setting', 'Camera Angle', 'Camera Settings', 'Lighting', 'Emotions']
+
+            }
         }
     }
 
@@ -104,6 +119,11 @@ const { responses, assembleResponse, storeResponse, assembleFinalDalle } = requi
         console.log(this.state.medium);
     }
 
+    changeLanguage = (e) => {
+        this.setState({language: e.target.value});
+        console.log(this.state.medium);
+    }
+
     finishAssembling = () => {
         //get text from final input stage and assemble it into final query for dalle
         if(this.state.stage == this.state.numStages - 1) {
@@ -122,12 +142,12 @@ const { responses, assembleResponse, storeResponse, assembleFinalDalle } = requi
         return(
             <div>
                <h1> {this.state.stage === 0 ? 'Select a Medium' : null}
-                { this.state.stage > 0 ? this.state.stage_names[this.state.medium][this.state.stage - 1] : null}</h1>
+                { this.state.stage > 0 ? this.state.stage_names[this.state.language][this.state.medium][this.state.stage - 1] : null}</h1>
 
 
-                <HintCloud medium={this.state.medium} stage={this.state.stage}/>
+                <HintCloud medium={this.state.medium} stage={this.state.stage} language={this.state.language}/>
 
-                <Prompt medium={this.state.medium} stage={this.state.stage}/>
+                <Prompt medium={this.state.medium} stage={this.state.stage} language={this.state.language}/>
 
                 
 
@@ -137,6 +157,8 @@ const { responses, assembleResponse, storeResponse, assembleFinalDalle } = requi
                         <button className="btn btn-medium" value={'painting'} onClick={e => this.selectPainting(e, 'value')}>Painting</button>
                         <button className="btn btn-medium" value={'sculpture'} onClick={e => this.selectPainting(e, 'value')}>Sculpture</button>
                         <button className="btn btn-medium" value={'photography'} onClick={e => this.selectPainting(e, 'value')}>Photography</button>
+                        <button className="btn" value={'CZ'} onClick={e => this.changeLanguage(e, 'value')}>CZ</button>
+                        <button className="btn" value={'DE'} onClick={e => this.changeLanguage(e, 'value')}>DE</button>
                     </div>
                     
                     : 

@@ -13,32 +13,32 @@ import { Prompts } from "./dataFile";
 
  class Prompt extends React.Component {
 
-    selectText = (medium, stage) => {
+    selectText = (medium, stage, language) => {
         
         //select the accompanying text for each stage
         if(medium === "") {
-            return Prompts.medium;
+            return Prompts[language].medium;
 
         } else if(medium === "painting") {
             //depending on the stage, return the appropriate text
-            return Prompts.painting[stage];
+            return Prompts[language].painting[stage];
 
         } else if(medium === "sculpture") {
             //depending on the stage, return the appropriate text
-            return Prompts.sculpture[stage];
+            return Prompts[language].sculpture[stage];
         } else if(medium === "photography") {
             //depending on the stage, return the appropriate text
-            return Prompts.photography[stage];
+            return Prompts[language].photography[stage];
         }
 
     }
 
     render() {
-        const { medium, stage } = this.props;
+        const { medium, stage, language } = this.props;
 
         return(
             <div>
-                <p>{this.selectText(medium, stage)}</p>
+                <p>{this.selectText(medium, stage, language)}</p>
             </div>
             
         )

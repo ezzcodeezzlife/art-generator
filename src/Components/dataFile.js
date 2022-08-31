@@ -1,5 +1,13 @@
 /****
  * Hint Cloud Data
+ * 
+ * TODO:
+ * Language Translation:
+ *  - add hintclouds in DE and CZ
+ *  - assemble both ENG and DE/CZ prompts
+ *      - if lang = ENG, store only ENG
+ *  - show preferred language prompt
+ * 
  */
 
 var Facts = {
@@ -41,6 +49,10 @@ var Facts = {
     , 'airbrush','photocollage','vector art','digital art', 'pencil drawing','pencil sketch','woodcut','charcoal sketch','cartoon','animation', 'comic style','etching', 'mural',
     'blueprint', 'botanical illustration', 'anatomical illustration','map','scientific diagram','voroni diagram','pixel art'],
 
+    painting_types_CZ: ['pastelka', 'dětská kresba', 'akryl na plátně', 'akvarel', 'olejomalba', 'barevná tužka', 'čínský akvarel', 'pastely',
+     , 'airbrush', 'fotokoláž', 'vektorové umění', 'digitální umění', 'kresba tužkou', 'náčrt tužkou', 'dřevořez', 'náčrt uhlem', 'karikatura', 'animace', 'komiksový styl' ,'lept', 'nástěnná malba',
+     'modrotisk', 'botanická ilustrace', 'anatomická ilustrace', 'mapa', 'vědecký diagram', 'voroni diagram', 'pixelové umění'],
+
     painting_content: ['landscape of mars', 'portrait of judge', 'still life of fruit', 'orange elephant','old-fashioned greenhouse', 'vintage can of pickles', 
     'tower of Babel', 'secret human civilization inside a blooming flower', 'alien houseplant', 'electric sheep','bouquet of flowers', 'green family of dolphins', 
     'group of old friends with straw hats', 'godess of Love'],
@@ -75,35 +87,101 @@ var Facts = {
 }
 
 var Prompts = {
-    medium: 'The first decision every artist has to make is choosing a medium: what kind of artwork will it be? Each choice has its own specificities and will lead you down a slightly different creative path. Which of these is your calling?',
-    painting: {
-        //lookup holds the hint cloud variable for each stage ordered by stage id
-        lookup: ['painting_types', 'painting_content', 'painting_setting','emotions', 'looks_techniques','art_styles'],
-        //holds the guiding prompt for each dialogue stage named by stage id (such that it can be called as prompt[stage])
-        1: ['Let’s get more specific. There are endless possibilities of what to do on a canvas. You might prefer the expressive colours of oil paint, or the gentler approach of pencil drawings. However, technical sketches and mosaics are not off the table! Each form has its magic and all of them are at your disposal. Now, which one will it be?'],
-        2: ['Once we know how to approach the artwork, we can start filling it in. Think of things, characters - truly anything. Renaissance artworks are often full of people, abstract artworks are full of shapes and colors, and some can just be filled with emptiness. Go ahead, dream away:'],
-        3: ['We know what we are focusing on, but what about everything all around. Where is this scene set? Is there even a setting? Maybe you are fine with what you’ve chosen. That is fine by me as well.'],
-        4: ['Now that we know what is in the artwork, we also need to know how it will be depicted. Canvases will often radiate some energy - calming, energizing, they can even make you tired. This goes hand in hand with emotions. Artists will often want to communicate some sort of emotion through their art. This can come out softly - through colour tones and structure, but also explicitly - through dreadful expressions or symbolism. Think of emotions and energies you would want to convey through your artwork!'],
-        5: ['We are getting close. There are endless styles in the world of art - these either help bring out the visuality of your scene, or better communicate the desired message. With my help, try to brainstorm styles, techinques and looks that will help shape your artwork into a truly personal masterpiece. Think about styles from history, but also also contemporary aesthetics. Perhaps you are a pioneer and don’t want to model yourself on any existing look, so this is not a must! '],
-        6: ['Most of us will be driven by outer inspiration, which often take shape in a person or a group. Do you have an inspiration? Is there someone, or something that you admire and wish to follow in their footsteps? Perhaps you will want to finish you artwork off in the style of…']
+    ENG: {
+        medium: 'The first decision every artist has to make is choosing a medium: what kind of artwork will it be? Each choice has its own specificities and will lead you down a slightly different creative path. Which of these is your calling?',
+        painting: {
+            //lookup holds the hint cloud variable for each stage ordered by stage id
+            lookup: ['painting_types', 'painting_content', 'painting_setting','emotions', 'looks_techniques','art_styles'],
+            //holds the guiding prompt for each dialogue stage named by stage id (such that it can be called as prompt[stage])
+            1: ['Let’s get more specific. There are endless possibilities of what to do on a canvas. You might prefer the expressive colours of oil paint, or the gentler approach of pencil drawings. However, technical sketches and mosaics are not off the table! Each form has its magic and all of them are at your disposal. Now, which one will it be?'],
+            2: ['Once we know how to approach the artwork, we can start filling it in. Think of things, characters - truly anything. Renaissance artworks are often full of people, abstract artworks are full of shapes and colors, and some can just be filled with emptiness. Go ahead, dream away:'],
+            3: ['We know what we are focusing on, but what about everything all around. Where is this scene set? Is there even a setting? Maybe you are fine with what you’ve chosen. That is fine by me as well.'],
+            4: ['Now that we know what is in the artwork, we also need to know how it will be depicted. Canvases will often radiate some energy - calming, energizing, they can even make you tired. This goes hand in hand with emotions. Artists will often want to communicate some sort of emotion through their art. This can come out softly - through colour tones and structure, but also explicitly - through dreadful expressions or symbolism. Think of emotions and energies you would want to convey through your artwork!'],
+            5: ['We are getting close. There are endless styles in the world of art - these either help bring out the visuality of your scene, or better communicate the desired message. With my help, try to brainstorm styles, techinques and looks that will help shape your artwork into a truly personal masterpiece. Think about styles from history, but also also contemporary aesthetics. Perhaps you are a pioneer and don’t want to model yourself on any existing look, so this is not a must! '],
+            6: ['Most of us will be driven by outer inspiration, which often take shape in a person or a group. Do you have an inspiration? Is there someone, or something that you admire and wish to follow in their footsteps? Perhaps you will want to finish you artwork off in the style of…']
+        },
+        sculpture: {
+            lookup: ['sculpture_types', 'sculpture_content', 'sculpture_forms', 'emotions', 'structure_looks', 'art_styles'],
+            1: ['sculpture stage 1 description'],
+            2: ['sculpture stage 2 description'],
+            3: ['sculpture stage 3 description'],
+            4: ['sculpture stage 4 description'],
+            5: ['sculpture stage 5 description'],
+            6: ['sculpture stage 6 description']
+        },
+        photography: {
+            lookup: ['photo_content', 'photo_setting', 'camera_angles', 'camera_settings', 'lighting', 'emotions'],
+            1: ['photography stage 1 description'],
+            2: ['photography stage 2 description'],
+            3: ['photography stage 3 description'],
+            4: ['photography stage 4 description'],
+            5: ['photography stage 5 description'],
+            6: ['photography stage 6 description']
+        }
     },
-    sculpture: {
-        lookup: ['sculpture_types', 'sculpture_content', 'sculpture_forms', 'emotions', 'structure_looks', 'art_styles'],
-        1: ['sculpture stage 1 description'],
-        2: ['sculpture stage 2 description'],
-        3: ['sculpture stage 3 description'],
-        4: ['sculpture stage 4 description'],
-        5: ['sculpture stage 5 description'],
-        6: ['sculpture stage 6 description']
+    CZ: {
+        medium: 'První rozhodnutí, které musí každý umělec udělat, je vybrat si médium: jaký druh uměleckého díla to bude? Každá volba má svá specifika a zavede vás trochu jinou kreativní cestou. Která z nich je vaše povolání?',
+        painting: {
+            //lookup holds the hint cloud variable for each stage ordered by stage id
+            lookup: ['painting_types_CZ', 'painting_content', 'painting_setting','emotions', 'looks_techniques','art_styles'],
+            //holds the guiding prompt for each dialogue stage named by stage id (such that it can be called as prompt[stage])
+            1: ['Buďme konkrétnější. Možností, co na plátně dělat, je nepřeberné množství. Můžete dát přednost výrazným barvám olejové barvy nebo jemnějšímu pojetí kresby tužkou. Technické náčrty a mozaiky však nejsou ze stolu! Každá forma má své kouzlo a všechny jsou vám k dispozici. A teď, který to bude?'],
+            2: ['Jakmile víme, jak k uměleckému dílu přistupovat, můžeme je začít vyplňovat. Myslete na věci, postavy - opravdu cokoli. Renesanční umělecká díla jsou často plná lidí, abstraktní umělecká díla jsou plná tvarů a barev a některá mohou být naplněna prázdnotou. Pokračuj, sni pryč:'],
+            3: ['Víme, na co se zaměřujeme, ale co všechno kolem. Kde se tato scéna odehrává? Existuje vůbec nějaké nastavení? Možná jste v pořádku s tím, co jste si vybrali. To je v pořádku i pro mě.'],
+            4: ['Teď, když víme, co je na uměleckém díle, potřebujeme také vědět, jak to bude zobrazeno. Plátna budou často vyzařovat nějakou energii – uklidňující, energizující, mohou vás i unavit. To jde ruku v ruce s emocemi. Umělci budou často chtít prostřednictvím svého umění sdělit nějaký druh emocí. To může vyjít jemně – prostřednictvím barevných tónů a struktury, ale také explicitně – prostřednictvím děsivých výrazů nebo symboliky. Přemýšlejte o emocích a energiích, které byste chtěli zprostředkovat svým uměleckým dílem!'],
+            5: ['Blížíme se. Ve světě umění existuje nepřeberné množství stylů – ty buď pomohou vyzdvihnout vizualitu vaší scény, nebo lépe sdělují požadované sdělení. S mou pomocí se pokuste vymyslet styly, techniky a vzhled, které vám pomohou vytvarovat vaše umělecké dílo do skutečně osobního mistrovského díla. Zamyslete se nad styly z historie, ale i současné estetiky. Možná jste průkopník a nechcete se modelovat podle žádného existujícího vzhledu, takže to není nutnost! '],
+            6: ['Většina z nás bude poháněna vnější inspirací, která se často formuje v osobě nebo skupině. Máš nějakou inspiraci? Je někdo nebo něco, koho obdivujete a chcete jít v jeho stopách? Možná budete chtít dokončit své umělecké dílo ve stylu…']
+        },
+        sculpture: {
+            lookup: ['sculpture_types', 'sculpture_content', 'sculpture_forms', 'emotions', 'structure_looks', 'art_styles'],
+            1: ['sculpture stage 1 description'],
+            2: ['sculpture stage 2 description'],
+            3: ['sculpture stage 3 description'],
+            4: ['sculpture stage 4 description'],
+            5: ['sculpture stage 5 description'],
+            6: ['sculpture stage 6 description']
+        },
+        photography: {
+            lookup: ['photo_content', 'photo_setting', 'camera_angles', 'camera_settings', 'lighting', 'emotions'],
+            1: ['photography stage 1 description'],
+            2: ['photography stage 2 description'],
+            3: ['photography stage 3 description'],
+            4: ['photography stage 4 description'],
+            5: ['photography stage 5 description'],
+            6: ['photography stage 6 description']
+        }
     },
-    photography: {
-        lookup: ['photo_content', 'photo_setting', 'camera_angles', 'camera_settings', 'lighting', 'emotions'],
-        1: ['photography stage 1 description'],
-        2: ['photography stage 2 description'],
-        3: ['photography stage 3 description'],
-        4: ['photography stage 4 description'],
-        5: ['photography stage 5 description'],
-        6: ['photography stage 6 description']
+    DE: {
+        medium: 'The first decision every artist has to make is choosing a medium: what kind of artwork will it be? Each choice has its own specificities and will lead you down a slightly different creative path. Which of these is your calling?',
+        painting: {
+            //lookup holds the hint cloud variable for each stage ordered by stage id
+            lookup: ['painting_types', 'painting_content', 'painting_setting','emotions', 'looks_techniques','art_styles'],
+            //holds the guiding prompt for each dialogue stage named by stage id (such that it can be called as prompt[stage])
+            1: ['Let’s get more specific. There are endless possibilities of what to do on a canvas. You might prefer the expressive colours of oil paint, or the gentler approach of pencil drawings. However, technical sketches and mosaics are not off the table! Each form has its magic and all of them are at your disposal. Now, which one will it be?'],
+            2: ['Once we know how to approach the artwork, we can start filling it in. Think of things, characters - truly anything. Renaissance artworks are often full of people, abstract artworks are full of shapes and colors, and some can just be filled with emptiness. Go ahead, dream away:'],
+            3: ['We know what we are focusing on, but what about everything all around. Where is this scene set? Is there even a setting? Maybe you are fine with what you’ve chosen. That is fine by me as well.'],
+            4: ['Now that we know what is in the artwork, we also need to know how it will be depicted. Canvases will often radiate some energy - calming, energizing, they can even make you tired. This goes hand in hand with emotions. Artists will often want to communicate some sort of emotion through their art. This can come out softly - through colour tones and structure, but also explicitly - through dreadful expressions or symbolism. Think of emotions and energies you would want to convey through your artwork!'],
+            5: ['We are getting close. There are endless styles in the world of art - these either help bring out the visuality of your scene, or better communicate the desired message. With my help, try to brainstorm styles, techinques and looks that will help shape your artwork into a truly personal masterpiece. Think about styles from history, but also also contemporary aesthetics. Perhaps you are a pioneer and don’t want to model yourself on any existing look, so this is not a must! '],
+            6: ['Most of us will be driven by outer inspiration, which often take shape in a person or a group. Do you have an inspiration? Is there someone, or something that you admire and wish to follow in their footsteps? Perhaps you will want to finish you artwork off in the style of…']
+        },
+        sculpture: {
+            lookup: ['sculpture_types', 'sculpture_content', 'sculpture_forms', 'emotions', 'structure_looks', 'art_styles'],
+            1: ['sculpture stage 1 description'],
+            2: ['sculpture stage 2 description'],
+            3: ['sculpture stage 3 description'],
+            4: ['sculpture stage 4 description'],
+            5: ['sculpture stage 5 description'],
+            6: ['sculpture stage 6 description']
+        },
+        photography: {
+            lookup: ['photo_content', 'photo_setting', 'camera_angles', 'camera_settings', 'lighting', 'emotions'],
+            1: ['photography stage 1 description'],
+            2: ['photography stage 2 description'],
+            3: ['photography stage 3 description'],
+            4: ['photography stage 4 description'],
+            5: ['photography stage 5 description'],
+            6: ['photography stage 6 description']
+        }
     }
 }
 
