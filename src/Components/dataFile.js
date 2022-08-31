@@ -12,11 +12,23 @@
 
 var Facts = {
 
-    funFacts: ['The first use of the term digital art was in the early 1980s when the pioneering digital artist Harold Cohen created AARON, a robotic machine designed to make large drawings on sheets of paper placed on the floor.', 
-    'One of the earliest electronic works is \'Oscillon 40\' dating from 1952. The artist, Ben Laposky, used an oscilloscope to manipulate electronic waves that appeared on the small fluorescent screen.',
-    'In the early 1960s, access to computers was limited and as a result, some of the first people to use computers creatively were computer scientists or mathematicians.',
-    'In the early 1970s, the Slade School of Art in  London etablished what was later called the \'Experimental and Computing Department\'.',
-    'Many artists who now work with computers incorporate this technology into their practice as just one tool amongst many that they may use interchangeably. Many no longer define themselves as practitioners of a specific media.'],
+    funFacts: {
+        ENG: ['The first use of the term digital art was in the early 1980s when the pioneering digital artist Harold Cohen created AARON, a robotic machine designed to make large drawings on sheets of paper placed on the floor.', 
+        'One of the earliest electronic works is \'Oscillon 40\' dating from 1952. The artist, Ben Laposky, used an oscilloscope to manipulate electronic waves that appeared on the small fluorescent screen.',
+        'In the early 1960s, access to computers was limited and as a result, some of the first people to use computers creatively were computer scientists or mathematicians.',
+        'In the early 1970s, the Slade School of Art in  London etablished what was later called the \'Experimental and Computing Department\'.',
+        'Many artists who now work with computers incorporate this technology into their practice as just one tool amongst many that they may use interchangeably. Many no longer define themselves as practitioners of a specific media.'],
+        CZ: ['První použití termínu digitální umění bylo na počátku 80. let, kdy průkopnický digitální umělec Harold Cohen vytvořil AARON, robotický stroj určený k vytváření velkých kreseb na listech papíru umístěných na podlaze.',
+        'Jedním z nejstarších elektronických děl je \'Oscillon 40\' z roku 1952. Umělec Ben Laposky použil osciloskop k manipulaci s elektronickými vlnami, které se objevily na malé fluorescenční obrazovce.',
+        'Na počátku 60. let byl přístup k počítačům omezený a v důsledku toho někteří z prvních lidí, kteří počítače kreativně používali, byli počítačoví vědci nebo matematici.',
+        'Na počátku 70. let minulého století zřídila Slade School of Art v Londýně to, co bylo později nazváno \'Experimentální a výpočetní oddělení\'.',
+        'Mnoho umělců, kteří nyní pracují s počítači, začleňuje tuto technologii do své praxe jako jeden z mnoha nástrojů, které mohou používat zaměnitelně. Mnozí se již nedefinují jako praktikující konkrétního média.'],
+        DE: ['Die erste Verwendung des Begriffs digitale Kunst erfolgte in den frühen 1980er Jahren, als der bahnbrechende digitale Künstler Harold Cohen AARON erschuf, eine Robotermaschine, die dazu bestimmt war, große Zeichnungen auf Papierbögen zu machen, die auf dem Boden liegen.',
+        'Eines der frühesten elektronischen Werke ist „Oscillon 40“ aus dem Jahr 1952. Der Künstler Ben Laposky benutzte ein Oszilloskop, um elektronische Wellen zu manipulieren, die auf dem kleinen fluoreszierenden Bildschirm erschienen.',
+        'In den frühen 1960er Jahren war der Zugang zu Computern begrenzt, und infolgedessen waren einige der ersten Menschen, die Computer kreativ nutzten, Informatiker oder Mathematiker.',
+        'In den frühen 1970er Jahren gründete die Slade School of Art in London das, was später als \'Experimental and Computing Department\' bezeichnet wurde.',
+        'Viele Künstler, die jetzt mit Computern arbeiten, integrieren diese Technologie in ihre Praxis als nur ein Werkzeug unter vielen, das sie austauschbar verwenden können. Viele definieren sich nicht mehr als Praktiker eines bestimmten Mediums.'],
+    },
 
     emotions: ['light', 'peaceful', 'calm', 'serene', 'soothing', 'relaxed',
     'comforting', 'cosy', 'tranquil', 'quiet', 'delicate', 'subtle', 'mild', 'ethereal', 'elegant',
@@ -44,11 +56,12 @@ var Facts = {
 
 
     //painting
-
+    //CZ preklady sklonene ve spravnem tvaru: Olejomalba 'divokych ptaku' 'v parku'  (sklonovani se meni podle predchoziho rodu!)
+    //DE translate and add to hint cloud with prepositions: Oil painting 'of flying birds' 'in a park'
     painting_types: ['crayon', 'child drawing', 'acrylic on canvas', 'watercolor','oil painting','coloured pencil', 'chinese watercolor','pastels', 'airbrush','photocollage','vector art','digital art', 'pencil drawing','pencil sketch','woodcut','charcoal sketch','cartoon','animation', 'comic style','etching', 'mural',
     'blueprint', 'botanical illustration', 'anatomical illustration','map','scientific diagram','voroni diagram','pixel art'],
 
-    painting_types_CZ: ['pastelka', 'dětská kresba', 'akryl na plátně', 'akvarel', 'olejomalba', 'barevná tužka', 'čínský akvarel', 'pastely',
+    painting_types_CZ: ['pastelová malba', 'dětská kresba', 'akryl na plátně', 'akvarel', 'olejomalba', 'malba barevnou tužkou', 'čínský akvarel', 'pastelová malba',
     'airbrush', 'fotokoláž', 'vektorové umění', 'digitální umění', 'kresba tužkou', 'náčrt tužkou', 'dřevořez', 'náčrt uhlem', 'karikatura', 'animace', 'komiksový styl' ,'lept', 'nástěnná malba',
     'modrotisk', 'botanická ilustrace', 'anatomická ilustrace', 'mapa', 'vědecký diagram', 'voroni diagram', 'pixelové umění'],
 
@@ -60,10 +73,16 @@ var Facts = {
     'tower of Babel', 'secret human civilization inside a blooming flower', 'alien houseplant', 'electric sheep','bouquet of flowers', 'green family of dolphins', 
     'group of old friends with straw hats', 'godess of Love'],
 
+    painting_content_CZ: ['krajiny Marsu', 'portrét soudce', 'zátiší ovoce', 'oranžového slona', 'staromódního skleníku', 'vinobraní plechovky okurek',
+     'Babylonské věže', 'tajné lidské civilizace v rozkvetlé květině', 'mimozemské pokojové rostliny', 'elektrické ovce', 'kytice květin', 'zelené rodiny delfínů',
+     'skupiny starých přátel se slaměnými klobouky', 'bohyně lásky'],
+
     painting_setting: ['from a distance', 'during a sunset', 'in a poppy field at noon', 'in the French countryside', 'by the sea', 'during the last day on Earth', 
     'before the storm', 'in the poolclub', 'underwater', 'in a stadium', 'in the centre of the universe', 'in the middle of the ocean', 'in the middle of the desert', 'nowhere'],
 
     // sculpture
+    //CZ preklady sklonene ve spravnem tvaru: 'Bronzova' socha 'divokych ptaku' 'v parku'
+    //DE translate and add to hint cloud with prepositions: Goldskulptur 'of flying birds' 'in a park'
     sculpture_types: ['bronze','marble','terracota','jade', 'gold', 'silver','ice carving', 'plastic','fiberglass','plant','sand','butter', 'wood','glass','stone','metal',
     'ceramic', 'clay', 'wax', 'rubber', 'plaster', 'ivory', 'fabric'],
     
@@ -74,6 +93,8 @@ var Facts = {
     sculpture_forms: ['lit from above', 'smooth texture', 'rough texture', 'large scale', 'miniature'],
     
     //photography
+    //CZ preklady sklonene ve spravnem tvaru: Fotografie 'divokych ptaku' 'v parku'
+    //DE translate and add to hint cloud with prepositions: A photograph 'of flying birds' 'in a park'
 
     photo_content: ['flying birds', 'wild animals', 'waterfalls', 'exterior of a family house', 'ministry of truth'],
 
@@ -126,7 +147,7 @@ var Prompts = {
         medium: 'První rozhodnutí, které musí každý umělec udělat, je vybrat si médium: jaký druh uměleckého díla to bude? Každá volba má svá specifika a zavede vás trochu jinou kreativní cestou. Která z nich je vaše povolání?',
         painting: {
             //lookup holds the hint cloud variable for each stage ordered by stage id
-            lookup: ['painting_types_CZ', 'painting_content', 'painting_setting','emotions', 'looks_techniques','art_styles'],
+            lookup: ['painting_types_CZ', 'painting_content_CZ', 'painting_setting','emotions', 'looks_techniques','art_styles'],
             //holds the guiding prompt for each dialogue stage named by stage id (such that it can be called as prompt[stage])
             1: ['Buďme konkrétnější. Možností, co na plátně dělat, je nepřeberné množství. Můžete dát přednost výrazným barvám olejové barvy nebo jemnějšímu pojetí kresby tužkou. Technické náčrty a mozaiky však nejsou ze stolu! Každá forma má své kouzlo a všechny jsou vám k dispozici. A teď, který to bude?'],
             2: ['Jakmile víme, jak k uměleckému dílu přistupovat, můžeme je začít vyplňovat. Myslete na věci, postavy - opravdu cokoli. Renesanční umělecká díla jsou často plná lidí, abstraktní umělecká díla jsou plná tvarů a barev a některá mohou být naplněna prázdnotou. Pokračuj, sni pryč:'],
