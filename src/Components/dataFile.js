@@ -45,9 +45,9 @@ var Facts = {
 
     //painting
 
-    painting_types: ['crayon', 'child drawing', 'acrylic on canvas', 'watercolor','oil painting','coloured pencil', 'chinese watercolor','pastels',
-    , 'airbrush','photocollage','vector art','digital art', 'pencil drawing','pencil sketch','woodcut','charcoal sketch','cartoon','animation', 'comic style','etching', 'mural',
-    'blueprint', 'botanical illustration', 'anatomical illustration','map','scientific diagram','voroni diagram','pixel art'],
+    painting_types_DE: ['Kreide', 'Kinderzeichnung', 'Acryl auf Leinwand', 'Aquarell', 'Ölmalerei', 'Buntstift', 'chinesisches Aquarell', 'Pastelle',
+     , 'Airbrush', 'Fotocollage', 'Vektorgrafiken', 'digitale Kunst', 'Bleistiftzeichnung', 'Bleistiftskizze', 'Holzschnitt', 'Kohlezeichnung', 'Cartoon', 'Animation', 'Comic-Stil' ,'Radierung', 'Wandbild',
+     'Blaupause', 'botanische Illustration', 'anatomische Illustration', 'Karte', 'wissenschaftliches Diagramm', 'Voroni-Diagramm', 'Pixelkunst'],
 
     painting_types_CZ: ['pastelka', 'dětská kresba', 'akryl na plátně', 'akvarel', 'olejomalba', 'barevná tužka', 'čínský akvarel', 'pastely',
      , 'airbrush', 'fotokoláž', 'vektorové umění', 'digitální umění', 'kresba tužkou', 'náčrt tužkou', 'dřevořez', 'náčrt uhlem', 'karikatura', 'animace', 'komiksový styl' ,'lept', 'nástěnná malba',
@@ -152,17 +152,17 @@ var Prompts = {
         }
     },
     DE: {
-        medium: 'The first decision every artist has to make is choosing a medium: what kind of artwork will it be? Each choice has its own specificities and will lead you down a slightly different creative path. Which of these is your calling?',
+        medium: 'Die erste Entscheidung, die jeder Künstler treffen muss, ist die Wahl des Mediums: Was für ein Kunstwerk soll es werden? Jede Auswahl hat ihre eigenen Besonderheiten und führt Sie auf einen etwas anderen kreativen Weg. Welche davon ist Ihre Berufung?',
         painting: {
             //lookup holds the hint cloud variable for each stage ordered by stage id
-            lookup: ['painting_types', 'painting_content', 'painting_setting','emotions', 'looks_techniques','art_styles'],
+            lookup: ['painting_types_DE', 'painting_content', 'painting_setting','emotions', 'looks_techniques','art_styles'],
             //holds the guiding prompt for each dialogue stage named by stage id (such that it can be called as prompt[stage])
-            1: ['Let’s get more specific. There are endless possibilities of what to do on a canvas. You might prefer the expressive colours of oil paint, or the gentler approach of pencil drawings. However, technical sketches and mosaics are not off the table! Each form has its magic and all of them are at your disposal. Now, which one will it be?'],
-            2: ['Once we know how to approach the artwork, we can start filling it in. Think of things, characters - truly anything. Renaissance artworks are often full of people, abstract artworks are full of shapes and colors, and some can just be filled with emptiness. Go ahead, dream away:'],
-            3: ['We know what we are focusing on, but what about everything all around. Where is this scene set? Is there even a setting? Maybe you are fine with what you’ve chosen. That is fine by me as well.'],
-            4: ['Now that we know what is in the artwork, we also need to know how it will be depicted. Canvases will often radiate some energy - calming, energizing, they can even make you tired. This goes hand in hand with emotions. Artists will often want to communicate some sort of emotion through their art. This can come out softly - through colour tones and structure, but also explicitly - through dreadful expressions or symbolism. Think of emotions and energies you would want to convey through your artwork!'],
-            5: ['We are getting close. There are endless styles in the world of art - these either help bring out the visuality of your scene, or better communicate the desired message. With my help, try to brainstorm styles, techinques and looks that will help shape your artwork into a truly personal masterpiece. Think about styles from history, but also also contemporary aesthetics. Perhaps you are a pioneer and don’t want to model yourself on any existing look, so this is not a must! '],
-            6: ['Most of us will be driven by outer inspiration, which often take shape in a person or a group. Do you have an inspiration? Is there someone, or something that you admire and wish to follow in their footsteps? Perhaps you will want to finish you artwork off in the style of…']
+            1: ['Lasst uns genauer werden. Es gibt unendlich viele Möglichkeiten, was man auf einer Leinwand machen kann. Vielleicht bevorzugst du die ausdrucksstarken Farben von Ölfarbe oder den sanfteren Ansatz von Bleistiftzeichnungen. Technische Skizzen und Mosaike sind jedoch nicht vom Tisch! Jede Form hat ihre Magie und alle stehen Ihnen zur Verfügung. Nun, welches wird es sein?'],
+            2: ['Sobald wir wissen, wie wir uns dem Kunstwerk nähern, können wir damit beginnen, es auszufüllen. Denken Sie an Dinge, Charaktere – wirklich alles. Renaissance-Kunstwerke sind oft voller Menschen, abstrakte Kunstwerke sind voller Formen und Farben, und einige können einfach mit Leere gefüllt sein. Los, träume davon:'],
+            3: ['Wir wissen, worauf wir uns konzentrieren, aber was ist mit allem drumherum. Wo spielt diese Szene? Gibt es überhaupt eine Einstellung? Vielleicht bist du in Ordnung mit dem, was du gewählt hast. Das ist auch in Ordnung für mich.'],
+            4: ['Nun, da wir wissen, was auf dem Kunstwerk zu sehen ist, müssen wir auch wissen, wie es dargestellt wird. Leinwände strahlen oft eine gewisse Energie aus – beruhigend, energetisierend, sie können sogar müde machen. Das geht mit Emotionen einher. Künstler möchten oft eine Art Emotion durch ihre Kunst vermitteln. Das kann leise herauskommen – durch Farbklänge und Struktur, aber auch explizit – durch furchterregende Ausdrücke oder Symbolik. Denken Sie an Emotionen und Energien, die Sie durch Ihr Kunstwerk vermitteln möchten!'],
+            5: ['Wir kommen näher. Es gibt unzählige Stile in der Welt der Kunst – diese helfen entweder, die Visualität Ihrer Szene hervorzuheben oder die gewünschte Botschaft besser zu kommunizieren. Versuchen Sie mit meiner Hilfe, Stile, Techniken und Looks zu entwickeln, die dazu beitragen, Ihr Kunstwerk zu einem wirklich persönlichen Meisterwerk zu machen. Denken Sie an Stile aus der Geschichte, aber auch an zeitgenössische Ästhetik. Vielleicht sind Sie ein Pionier und möchten sich nicht an einem bestehenden Look orientieren, also ist dies kein Muss! '],
+            6: ['Die meisten von uns werden von äußerer Inspiration getrieben, die oft in einer Person oder Gruppe Gestalt annimmt. Haben Sie eine Inspiration? Gibt es jemanden oder etwas, das Sie bewundern und in dessen Fußstapfen treten möchten? Vielleicht möchten Sie Ihr Kunstwerk im Stil von …']
         },
         sculpture: {
             lookup: ['sculpture_types', 'sculpture_content', 'sculpture_forms', 'emotions', 'structure_looks', 'art_styles'],
