@@ -45,13 +45,16 @@ var Facts = {
 
     //painting
 
-    painting_types_DE: ['Kreide', 'Kinderzeichnung', 'Acryl auf Leinwand', 'Aquarell', 'Ölmalerei', 'Buntstift', 'chinesisches Aquarell', 'Pastelle',
-     , 'Airbrush', 'Fotocollage', 'Vektorgrafiken', 'digitale Kunst', 'Bleistiftzeichnung', 'Bleistiftskizze', 'Holzschnitt', 'Kohlezeichnung', 'Cartoon', 'Animation', 'Comic-Stil' ,'Radierung', 'Wandbild',
-     'Blaupause', 'botanische Illustration', 'anatomische Illustration', 'Karte', 'wissenschaftliches Diagramm', 'Voroni-Diagramm', 'Pixelkunst'],
+    painting_types: ['crayon', 'child drawing', 'acrylic on canvas', 'watercolor','oil painting','coloured pencil', 'chinese watercolor','pastels', 'airbrush','photocollage','vector art','digital art', 'pencil drawing','pencil sketch','woodcut','charcoal sketch','cartoon','animation', 'comic style','etching', 'mural',
+    'blueprint', 'botanical illustration', 'anatomical illustration','map','scientific diagram','voroni diagram','pixel art'],
 
     painting_types_CZ: ['pastelka', 'dětská kresba', 'akryl na plátně', 'akvarel', 'olejomalba', 'barevná tužka', 'čínský akvarel', 'pastely',
-     , 'airbrush', 'fotokoláž', 'vektorové umění', 'digitální umění', 'kresba tužkou', 'náčrt tužkou', 'dřevořez', 'náčrt uhlem', 'karikatura', 'animace', 'komiksový styl' ,'lept', 'nástěnná malba',
-     'modrotisk', 'botanická ilustrace', 'anatomická ilustrace', 'mapa', 'vědecký diagram', 'voroni diagram', 'pixelové umění'],
+    'airbrush', 'fotokoláž', 'vektorové umění', 'digitální umění', 'kresba tužkou', 'náčrt tužkou', 'dřevořez', 'náčrt uhlem', 'karikatura', 'animace', 'komiksový styl' ,'lept', 'nástěnná malba',
+    'modrotisk', 'botanická ilustrace', 'anatomická ilustrace', 'mapa', 'vědecký diagram', 'voroni diagram', 'pixelové umění'],
+
+    painting_types_DE: ['Kreide', 'Kinderzeichnung', 'Acryl auf Leinwand', 'Aquarell', 'Ölmalerei', 'Buntstift', 'chinesisches Aquarell', 'Pastelle',
+    'Airbrush', 'Fotocollage', 'Vektorgrafiken', 'digitale Kunst', 'Bleistiftzeichnung', 'Bleistiftskizze', 'Holzschnitt', 'Kohlezeichnung', 'Cartoon', 'Animation', 'Comic-Stil' ,'Radierung', 'Wandbild',
+    'Blaupause', 'botanische Illustration', 'anatomische Illustration', 'Karte', 'wissenschaftliches Diagramm', 'Voroni-Diagramm', 'Pixelkunst'],
 
     painting_content: ['landscape of mars', 'portrait of judge', 'still life of fruit', 'orange elephant','old-fashioned greenhouse', 'vintage can of pickles', 
     'tower of Babel', 'secret human civilization inside a blooming flower', 'alien houseplant', 'electric sheep','bouquet of flowers', 'green family of dolphins', 
