@@ -55,7 +55,7 @@ class DalleComponent extends React.Component {
                     placeholder={this.props.text}
                     value={this.state.query}
                     onChange={(e) => {
-                        this.setState({token: 'sess-hkWiZM7P3U9sgoGAHHd9ZWK5Cc7jAhgRmKjacqU5'})
+                        this.setState({token: 'sess-ACAi73JHw0p4uzU8M4kzAT1lZm7DVamU6PeyUvkI'})
                         this.setState({query: e.target.value})}
                         }
                 /> : null

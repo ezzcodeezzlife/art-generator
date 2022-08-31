@@ -64,6 +64,21 @@ p {
   touch-action: manipulation;
 }
 
+.btn:hover {
+  background-color: rgba(39, 39, 39, 0.2);
+}
+
+.btn-medium {
+  font-size: 1.2rem;
+  padding: 10px 14px;
+  margin: 2% 5%;
+  display: inline;
+}
+
+.div-medium {
+  text-align: center;
+}
+
 .input {
   display: block;
   margin: auto;

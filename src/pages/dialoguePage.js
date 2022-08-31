@@ -52,20 +52,6 @@ const { responses, assembleResponse, storeResponse, assembleFinalDalle } = requi
         
         let currentStage = this.state.stage;
 
-        /**
-         * Button to previous stage:
-         * is enabled only if the current stage is greater than 1,
-         * otherwise it is disabled. 
-         */
-
-        //return button appears after the increment button is first clicked
-        document.querySelector('#btn-previous-stage').style.display = 'block';
-
-        //enable the return button after the stage is larger than 1
-        if(currentStage >= 1) {
-            document.querySelector('#btn-previous-stage').disabled = false;
-        }
-
         /***
          * Button to next stage:
          * is enabled only if the current stage is less than last,
@@ -90,12 +76,12 @@ const { responses, assembleResponse, storeResponse, assembleFinalDalle } = requi
 
         
 
-        /***
-         * Assign medium
-         */
-        if(this.state.stage === 0) {
-            this.setState({medium: input});
-        }
+        // /***
+        //  * Assign medium
+        //  */
+        // if(this.state.stage === 0) {
+        //     this.setState({medium: input});
+        // }
 
         /****
          * Feed input to assembler
@@ -112,27 +98,10 @@ const { responses, assembleResponse, storeResponse, assembleFinalDalle } = requi
         this.setState({stage: currentStage + 1});
     }
 
-    returnToPreviousStage = () => {
-        //decrease current stage by 1
-        let currentStage = this.state.stage;
-
-        //disable the return button once the stage is 1
-        if(currentStage == 2) {
-            document.querySelector('#btn-previous-stage').disabled = true;
-        }
-
-        //display correct forward button
-        if(currentStage != this.state.numStages - 1) {
-            //hide submit button
-            document.querySelector('#btn-result').style.display = 'none';
-            //show forward button
-            document.querySelector('#btn-next-stage').style.display = 'block';
-        }
-
-        //TODO: fill input field with the last value in the query array
-        document.querySelector('#dialogue-input').value = this.state.query[this.state.stage - 1];
-
-        this.setState({stage: currentStage - 1})
+    selectPainting = (e) => {
+        this.setState({medium: e.target.value});
+        this.setState({stage: 1});
+        console.log(this.state.medium);
     }
 
     finishAssembling = () => {
@@ -155,23 +124,33 @@ const { responses, assembleResponse, storeResponse, assembleFinalDalle } = requi
                <h1> {this.state.stage === 0 ? 'Select a Medium' : null}
                 { this.state.stage > 0 ? this.state.stage_names[this.state.medium][this.state.stage - 1] : null}</h1>
 
-                {/* TODO: update hint cloud */}
+
                 <HintCloud medium={this.state.medium} stage={this.state.stage}/>
 
                 <Prompt medium={this.state.medium} stage={this.state.stage}/>
 
-                <input className="btn" id="btn-previous-stage" type='submit'
-                    onClick= { this.returnToPreviousStage }
-                    value='Previous stage'
-                />
+                
 
-                <input className="input" id="dialogue-input" type='text'></input>
+                {
+                    this.state.stage === 0 ?
+                    <div className="div-medium">
+                        <button className="btn btn-medium" value={'painting'} onClick={e => this.selectPainting(e, 'value')}>Painting</button>
+                        <button className="btn btn-medium" value={'sculpture'} onClick={e => this.selectPainting(e, 'value')}>Sculpture</button>
+                        <button className="btn btn-medium" value={'photography'} onClick={e => this.selectPainting(e, 'value')}>Photography</button>
+                    </div>
+                    
+                    : 
 
-                <input className="btn" id="btn-next-stage" type='submit'
-                    onClick= { this.incrementStage }
-                    value = 'Next'
-                />
+                    <div>
+                        <input className="input" id="dialogue-input" type='text'></input>
 
+                        <input className="btn" id="btn-next-stage" type='submit'
+                            onClick= { this.incrementStage }
+                            value = 'Next'
+                        />
+                    </div>
+                    
+                }
                 
                 <Link href={'/loadingPage'}>
                     <button className="btn" onClick={this.finishAssembling} id="btn-result">
