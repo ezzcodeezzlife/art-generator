@@ -14,7 +14,7 @@ background: linear-gradient(90deg, rgba(168,90,94,1) 0%, rgba(218,173,85,1) 48%,
   -moz-osx-font-smoothing: grayscale;
 }
 
-h1 {
+h1, h2 {
   margin-top: 10%;
   text-align: center;
   font-size: 2rem;
@@ -187,4 +187,32 @@ code {
 .imgPreview {
   width: 100%;
   border-radius: 10px;
+}
+
+#canvas-container {
+  width: 100%;
+  text-align:center;
+}
+
+.sigCanvas{
+  border-radius: 30px;
+  border: 0px solid white;
+  padding: 0px;
+  
+}
+
+.publish-buttons {
+  display: none;
+}
+
+.email-input {
+  display: none;
+}
+
+#gallery-publish {
+  display: none;
+}
+
+#final-goodbye {
+  display: none;
 }
