@@ -11,6 +11,8 @@ import { Facts, Prompts } from './dataFile';
  * Based on stage of the dialogue, different array is used, from which
  * random words are selected to be shown.
  * 
+ * 
+ * DUMMY COMMENT FOR TESTING GIT
  */
 
 //TODO: reset hint cloud with each stage change
