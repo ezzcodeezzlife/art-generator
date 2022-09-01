@@ -72,7 +72,7 @@ const { responses, assembleResponse, storeResponse, assembleFinalDalle } = requi
             this.resetState();
             Router.push('/');
             
-        }, 30000);
+        }, 120000);
     }
 
     //reset state to initial values
@@ -93,7 +93,7 @@ const { responses, assembleResponse, storeResponse, assembleFinalDalle } = requi
            
             this.resetState();
             Router.push('/');
-        }, 5000);
+        }, 60000);
 
         /***
          * Button to next stage:

@@ -9,7 +9,19 @@ class DalleComponent extends React.Component {
         loading: false,
         error: false,
         result_provided: false,
+        result_id: 0,
     }
+    
+    // selects which image you picked and hides the rest, while enlarging the remaining one and adding finalStyling component
+    displayFavorite = (e) => {
+        console.log(e.target.src)
+        var choices = document.querySelectorAll('img');
+        for(let i = 0; i < choices.length; i++){
+            if(choices[i].src !== e.target.src) {
+              choices[i].style.display = "none"
+            }    
+        }
+      }
 
     getDalle2 = () => {
 
@@ -85,13 +97,15 @@ class DalleComponent extends React.Component {
             {this.state.loading && <p>Loading</p>}
 
             <div className="grid">
-                {this.state.result.map((result) => {
+                
+                {this.state.result.map((result) => { 
                     return (
                         <div className="card">
-                            <img 
+                            <img
                                 src={result.generation.image_path} 
                                 alt="" 
                                 className="imgPreview"
+                                onClick={e => this.displayFavorite(e, 'src')}
                             />
                         </div>
                     );
