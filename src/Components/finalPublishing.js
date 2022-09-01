@@ -1,5 +1,6 @@
 import React from "react";
 import SignatureCanvas from 'react-signature-canvas'
+import Router, { withRouter } from 'next/router'
 
 class FinalPublishing extends React.Component {
 
@@ -7,9 +8,44 @@ class FinalPublishing extends React.Component {
         signatureUrl: "",
     }
     
+    //add photo to gallery database, show the gallery on the page
+    addArt = async (e) => {
+        e.preventDefault();
+      
+        let artpiece = {
+          img_link: this.props.finalImage,
+          content: this.props.query,
+          createdAt: new Date().toISOString()
+        }
+      
+        //save the artpiece
+        let response = await fetch('/api/artwork', {
+          method: 'POST',
+          body: JSON.stringify(artpiece),
+        });
+      
+        // get the data
+        let data = await response.json();
+      
+        if (data.success) {
+            // reset the fields
+            console.log("success");
+            // set the message
+
+            //TODO: send photo to DB and to gallery
+            document.querySelector('#gallery-publish').style.display = 'none';
+            document.querySelector('#final-goodbye').style.display = 'block';
+      
+        } else {
+            // set the error
+            console.log("error");
+        }
+      }
+    
     hideSignature = () => {
         document.querySelector("#canvas-container").style.display = "none";
-        document.querySelector(".publish-buttons").style.display = "block";
+        //document.querySelector(".publish-buttons").style.display = "block";
+        document.querySelector('#gallery-publish').style.display = 'block';
     }
 
     showEmailInput = () => {
@@ -34,7 +70,7 @@ class FinalPublishing extends React.Component {
 
     cancelPublish = () => {
         document.querySelector('#gallery-publish').style.display = 'none';
-
+        Router.push('/');
     }
 
     render() {
@@ -61,7 +97,8 @@ class FinalPublishing extends React.Component {
                     </div> 
                 </div>
 
-                <div className="publish-buttons">
+                {/* TODO: send the photo through email */}
+                {/* <div className="publish-buttons">
                     <div className="email-buttons">
                         <p className="email-prompt">Do you wish to receive your artwork through email?</p>
                         <button className="btn email-prompt" onClick={this.showEmailInput}>Send to Email</button>
@@ -72,11 +109,11 @@ class FinalPublishing extends React.Component {
                         <input className="input" type="text" placeholder="Enter email"></input>
                         <button className="btn" onClick={this.sendEmail}>Submit</button>
                     </form>
-                </div>
+                </div> */}
 
                 <div id='gallery-publish'>
                     <p>Do you want to display your artwork in the Albertina Gallery among the other great artists?</p>
-                    <button className="btn" onClick={this.publishToGallery}>Publish to Gallery</button>
+                    <button className="btn" onClick={this.addArt}>Publish to Gallery</button>
                     <button className="btn" onClick={this.cancelPublish}>Do not publish</button>
                 </div>
 
@@ -84,9 +121,9 @@ class FinalPublishing extends React.Component {
                     <h1>
                         Thank you for your contribution!
                     </h1>
-                    <h2>
+                    <h3>
                         You are now a real artist, collaborativelly creating a new art form with the brush of artificial intellignce.
-                    </h2>
+                    </h3>
                 </div>
                          
             </div>

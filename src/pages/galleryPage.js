@@ -68,18 +68,20 @@ const addArt = async (e) => {
 
   return (
     <div>
-      <button onClick={handlePost}>Create User</button>
+      
+      {/* <button onClick={handlePost}>Create User</button>
       <button onClick={addArt}>Add Artpiece</button>
 
       <h1>Top 20 Movies of All Time</h1>
       <p>
         <small>(According to Metacritic)</small>
-      </p>
+      </p> */}
+
+      <h1>The gallery:</h1>
       <ul>
         {art.map((artpiece) => (
           <li>
             <img src={artpiece.img_link} />
-            <h2>{artpiece.type}</h2>
             <h3>{artpiece.content}</h3>
           </li>
         ))}

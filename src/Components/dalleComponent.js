@@ -47,6 +47,7 @@ class DalleComponent extends React.Component {
     // selects which image you picked and hides the rest, while enlarging the remaining one and adding finalStyling component
     displayFavorite = (e) => {
         this.setState({image_selected: true});
+        this.setState({final_image_src: e.target.src});
 
         e.target.transform = "scale(1.3)";
         e.target.style.transition = "transform 0.5s ease";
@@ -127,7 +128,7 @@ class DalleComponent extends React.Component {
 
             {
                 this.state.image_selected ? 
-                <FinalPublishing finalImage={}></FinalPublishing> : null
+                <FinalPublishing finalImage={ this.state.final_image_src } query={ this.state.query }></FinalPublishing> : null
             }
         </div>
         )
