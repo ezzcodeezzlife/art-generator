@@ -2,6 +2,7 @@ import React from "react";
 import HintCloud from "../Components/hintCloud";
 import Prompt from "../Components/prompt";
 import Link from 'next/link';
+import Router, { withRouter } from 'next/router'
 import { useState } from "react";
 
 const { responses, assembleResponse, storeResponse, assembleFinalDalle } = require('../Components/assembler_Obj');
@@ -37,6 +38,7 @@ const { responses, assembleResponse, storeResponse, assembleFinalDalle } = requi
         numStages: 7,
         query: "",
         dalleInput: "",
+        timer: null,
         language: 'ENG',
 
         //TODO: update stage names of h1 from dataFile instead of here 
@@ -62,10 +64,36 @@ const { responses, assembleResponse, storeResponse, assembleFinalDalle } = requi
         }
     }
 
+
+    //when page loads, start timer for 30 seconds, reset state
+    componentDidMount() {
+        this.state.timer = setTimeout(() => {
+            //return to start page
+            this.resetState();
+            Router.push('/');
+            
+        }, 30000);
+    }
+
+    //reset state to initial values
+    resetState = () => {
+        this.setState({stage: 0, medium: "", query: "", dalleInput: "", language: 'ENG'});
+    } 
+
+    //increase value of current stage by 1, and update the text and buttons accordingly
     incrementStage = () => {
-        //increase value of current stage by 1, and update the buttons accordingly
-        
         let currentStage = this.state.stage;
+
+        //reset timer in each stage, if user is inactive at any stage for 30 seconds, reset state and start over
+        clearTimeout(this.state.timer);
+        
+        this.state.timer = setTimeout(() => {
+            //return to start page
+            alert("You have been inactive for 30 seconds. Please restart the process.");
+           
+            this.resetState();
+            Router.push('/');
+        }, 5000);
 
         /***
          * Button to next stage:
@@ -85,24 +113,15 @@ const { responses, assembleResponse, storeResponse, assembleFinalDalle } = requi
         }
 
         //get text from input field and store it in the query array
-        let input = document.querySelector('#dialogue-input').value;
+        let input = document.querySelector('#current_selection').innerHTML;
         //TODO: change to fit the correct structure
         this.setState({query: input});
-
-        
-
-        // /***
-        //  * Assign medium
-        //  */
-        // if(this.state.stage === 0) {
-        //     this.setState({medium: input});
-        // }
 
         /****
          * Feed input to assembler
          */
         if(this.state.stage !== 0) {
-            let userInput = document.querySelector('#dialogue-input').value;
+            let userInput = document.querySelector('#current_selection').innerHTML;
             //store response in prefered language
             storeResponse(userInput, this.state.stage, responses, this.state.medium, this.state.language);
             if(this.state.language !== 'ENG'){
@@ -111,15 +130,21 @@ const { responses, assembleResponse, storeResponse, assembleFinalDalle } = requi
                 storeResponse(userInput, this.state.stage, responses, this.state.medium, 'ENG');
             }
         }
+
+        //get assembled query so far, show it on page, clear #current_selection
+        let assembledQuery = assembleResponse(responses, this.state.medium, this.state.language);
+        document.querySelector('#assembled_query').innerHTML = assembledQuery;
+        console.log(assembledQuery);
         
         //empty the input field
-        document.querySelector('#dialogue-input').value = '';
+        document.querySelector('#current_selection').innerHTML = '';
 
         //increase stage by 1
         this.setState({stage: currentStage + 1});
     }
 
-    selectPainting = (e) => {
+    //set medium to the value of the selected button
+    selectMedium = (e) => {
         this.setState({medium: e.target.value});
         this.setState({stage: 1});
         console.log(this.state.medium);
@@ -130,10 +155,10 @@ const { responses, assembleResponse, storeResponse, assembleFinalDalle } = requi
         console.log(this.state.medium);
     }
 
+    //get text from final input stage and assemble it into final query for dalle
     finishAssembling = () => {
-        //get text from final input stage and assemble it into final query for dalle
         if(this.state.stage == this.state.numStages - 1) {
-            let input = document.querySelector('#dialogue-input').value;
+            let input = document.querySelector('#current_selection').innerHTML;
             //store response in prefered language
             storeResponse(input, this.state.stage, responses, this.state.medium, this.state.language);
             if(this.state.language !== 'ENG'){
@@ -161,14 +186,13 @@ const { responses, assembleResponse, storeResponse, assembleFinalDalle } = requi
 
                 <Prompt medium={this.state.medium} stage={this.state.stage} language={this.state.language}/>
 
-                
-
                 {
                     this.state.stage === 0 ?
+                    // Buttons to select a medium
                     <div className="div-medium">
-                        <button className="btn btn-medium" value={'painting'} onClick={e => this.selectPainting(e, 'value')}>Painting</button>
-                        <button className="btn btn-medium" value={'sculpture'} onClick={e => this.selectPainting(e, 'value')}>Sculpture</button>
-                        <button className="btn btn-medium" value={'photography'} onClick={e => this.selectPainting(e, 'value')}>Photography</button>
+                        <button className="btn btn-medium" value={'painting'} onClick={e => this.selectMedium(e, 'value')}>Painting</button>
+                        <button className="btn btn-medium" value={'sculpture'} onClick={e => this.selectMedium(e, 'value')}>Sculpture</button>
+                        <button className="btn btn-medium" value={'photography'} onClick={e => this.selectMedium(e, 'value')}>Photography</button>
                         <button className="btn" value={'CZ'} onClick={e => this.changeLanguage(e, 'value')}>CZ</button>
                         <button className="btn" value={'DE'} onClick={e => this.changeLanguage(e, 'value')}>DE</button>
                     </div>
@@ -176,7 +200,8 @@ const { responses, assembleResponse, storeResponse, assembleFinalDalle } = requi
                     : 
 
                     <div>
-                        <input className="input" id="dialogue-input" type='text'></input>
+                        <p id="assembled_query"></p>
+                        <p id="current_selection"></p>
 
                         <input className="btn" id="btn-next-stage" type='submit'
                             onClick= { this.incrementStage }

@@ -84,7 +84,9 @@ import { Facts, Prompts } from './dataFile';
 
         this.state.hint_elements.forEach(element => {
             element.addEventListener("click", () => {
-                document.querySelector("#dialogue-input").value = element.innerHTML;
+
+                //show the selected word in the query field
+                document.querySelector('#current_selection').innerHTML = element.innerHTML;
             });
         })
     }
@@ -124,9 +126,12 @@ import { Facts, Prompts } from './dataFile';
 
     render() {
         return(
-            <div className="cloud">
-
+            <div>
+                <div className="cloud">
+                
+                </div>
             </div>
+
             
         )
     } 

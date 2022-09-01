@@ -8,7 +8,6 @@ class FinalPage extends React.Component {
         return(
             <div>
                 <FinalPublishing></FinalPublishing>
-                
             </div>
         )
     }
