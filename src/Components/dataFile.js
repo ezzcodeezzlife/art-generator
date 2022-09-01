@@ -39,6 +39,24 @@ var Facts = {
     'ominous', 'threatening','haunting', 'forbidding', 'gloomy', 'stormy', 'doom', 'apocalyptic','sinister', 'shadowy', 
     'ghostly', 'unnerving', 'harrowing', 'dreadful', 'frightful', 'shocking', 'terror', 'hideous', 'ghastly', 'terrifying'],
 
+    emotions_CZ: ['lehký', 'klidný', 'klidný', 'klidný', 'uklidňující', 'uvolněný',
+    'uklidňující', 'útulný', 'klidný', 'tichý', 'jemný', 'mírný', 'éterický', 'elegantní',
+    'něžný', 'měkký', 'lehký', 'jasný', 'živý', 'dynamický', 'duchovní', 'živý', 'energický',
+    'barevný', 'radostný', 'romantický', 'výrazný', 'bohatý', 'extatický', 'energizovaný', 'radostný',
+    'vášnivý', 'žhavý', 'tlumený', 'pochmurný', 'pohřební', 'smutný', 'melancholický', 'truchlivý', 'chmurný',
+    'pochmurný', 'smutný', 'bledý, sepraný', 'desaturovaný', 'šedý', 'nudný', 'ponurý', 'depresivní', 'unavený', 'unavený', 'tmavý',
+    'zlověstný', 'hrozivý', 'strašidelný', 'zakazující', 'chmurný', 'bouřlivý', 'zkáza', 'apokalyptický', 'zlověstný', 'stínový',
+    'přízračný', 'znervózňující', 'drásající', 'strašlivý', 'strašný', 'šokující', 'děs', 'hrozný', 'strašlivý', 'děsivý'],
+    
+    emotions_DE: ['leicht', 'friedlich', 'ruhig', 'gelassen', 'beruhigend', 'entspannt',
+    'beruhigend', 'gemütlich', 'ruhig', 'leise', 'zart', 'fein', 'mild', 'ätherisch', 'elegant',
+    'zart', 'weich', 'leicht', 'hell', 'lebendig', 'dynamisch', 'temperamentvoll', 'lebhaft', 'lebhaft', 'energetisch',
+    'bunt', 'freudig', 'romantisch', 'ausdrucksstark', 'reich', 'ekstatisch', 'energiegeladen', 'schwungvoll',
+    'leidenschaftlich', 'heiß', 'gedämpft', 'trostlos', 'beerdigt', 'düster', 'melancholisch', 'traurig', 'düster',
+    'düster', 'traurig', 'bleich, verwaschen', 'entsättigt', 'grau', 'stumpf', 'trostlos', 'deprimierend', 'müde', 'müde', 'dunkel',
+    'ominös', 'bedrohlich', 'eindringlich', 'verboten', 'düster', 'stürmisch', 'untergangsartig', 'apokalyptisch', 'finster', 'schattenhaft',
+    'gespenstisch', 'entnervend', 'erschütternd', 'schrecklich', 'schrecklich', 'schockierend', 'schrecklich', 'schrecklich', 'schrecklich', 'erschreckend'],
+
     structure_looks: ['swirling','organic','flowing','turbulent','distorted','uneven','lush','chaotic','monumental','rigorous',
     'imposing','geometric','ordered','angular','straight','rhythmic','composed','unified','harmonic','manmade','minimalist',
     'blocks','robust','defined','ornate','delicate','neat','precise','detailed','fine','elaborate','intricate','accurate',
@@ -73,12 +91,25 @@ var Facts = {
     'tower of Babel', 'secret human civilization inside a blooming flower', 'alien houseplant', 'electric sheep','bouquet of flowers', 'green family of dolphins', 
     'group of old friends with straw hats', 'godess of Love'],
 
-    painting_content_CZ: ['krajiny Marsu', 'portrét soudce', 'zátiší ovoce', 'oranžového slona', 'staromódního skleníku', 'vinobraní plechovky okurek',
-     'Babylonské věže', 'tajné lidské civilizace v rozkvetlé květině', 'mimozemské pokojové rostliny', 'elektrické ovce', 'kytice květin', 'zelené rodiny delfínů',
-     'skupiny starých přátel se slaměnými klobouky', 'bohyně lásky'],
+    painting_content_CZ: ['krajiny Marsu', 'portrétu soudce', 'zátiší ovoce', 'oranžového slona', 'staromódního skleníku', 'vinobraní plechovky okurek',
+    'Babylonské věže', 'tajné lidské civilizace v rozkvetlé květině', 'mimozemské pokojové rostliny', 'elektrické ovce', 'kytice květin', 'zelené rodiny delfínů',
+    'skupiny starých přátel se slaměnými klobouky', 'bohyně lásky'],
+
+    painting_content_DE: ['von der marslandschaft', 'von einem porträt eines richters', 'von einem stillleben aus früchten', 'von einem orangefarbenen elefanten', 'von einem altmodischen gewächshaus', 'von einer altmodischen dose Gurken',
+    'vom Turm zu Babel', 'einer geheimen menschlichen Zivilisation in einer blühenden Blume', 'einer außerirdischen Zimmerpflanze', 'elektrischen Schafen', 'einem Blumenstrauß', 'einer grünen Delfinfamilie',
+    'einer Gruppe alter Freunde mit Strohhüten', 'der Liebesgöttin'],
 
     painting_setting: ['from a distance', 'during a sunset', 'in a poppy field at noon', 'in the French countryside', 'by the sea', 'during the last day on Earth', 
-    'before the storm', 'in the poolclub', 'underwater', 'in a stadium', 'in the centre of the universe', 'in the middle of the ocean', 'in the middle of the desert', 'nowhere'],
+    'before the storm', 'in the poolclub', 'underwater', 'in a stadium', 'in the centre of the universe', 'in the middle of the ocean', 'in the middle of the desert', 'nowhere', 'in a lush garden',
+    'among the stars', 'in front of Taj Mahal', 'in the savanah', 'at an oasis', 'in a forest', 'next to a lake', 'by the sea', 'on a corn field', 'in a music studio'],
+
+    painting_setting_CZ: ['z dálky', 'při západu slunce', 'v poledne v makovém poli', 'na francouzském venkově', 'u moře', 'během posledního dne na Zemi',
+    'před bouří', 'v klubu u bazénu', 'pod vodou', 'na stadionu', 'uprostřed vesmíru', 'uprostřed oceánu', 'uprostřed pouště', ' nikde', 've svěží zahradě',
+    'mezi hvězdami', 'před Tádž Mahalem', 'v savaně', 'v oáze', 'v lese', 'u jezera', 'u moře', 'na kukuřičném poli', 'v hudebním studiu'],
+
+    painting_setting_DE: ['aus der Ferne', 'während eines Sonnenuntergangs', 'mittags in einem Mohnfeld', 'in der französischen Landschaft', 'am Meer', 'während des letzten Tages auf Erden',
+    'vor dem Sturm', 'im Poolclub', 'unter Wasser', 'in einem Stadion', 'im Zentrum des Universums', 'mitten im Ozean', 'mitten in der Wüste', ' nirgendwo', 'in einem üppigen Garten',
+    'unter den Sternen', 'vor dem Taj Mahal', 'in der Savanne', 'in einer Oase', 'in einem Wald', 'neben einem See', 'am Meer', 'auf einem Maisfeld', 'in einem Musikstudio'],
 
     // sculpture
     //CZ preklady sklonene ve spravnem tvaru: 'Bronzova' socha 'divokych ptaku' 'v parku'
@@ -147,7 +178,7 @@ var Prompts = {
         medium: 'První rozhodnutí, které musí každý umělec udělat, je vybrat si médium: jaký druh uměleckého díla to bude? Každá volba má svá specifika a zavede vás trochu jinou kreativní cestou. Která z nich je vaše povolání?',
         painting: {
             //lookup holds the hint cloud variable for each stage ordered by stage id
-            lookup: ['painting_types_CZ', 'painting_content_CZ', 'painting_setting','emotions', 'looks_techniques','art_styles'],
+            lookup: ['painting_types_CZ', 'painting_content_CZ', 'painting_setting_CZ','emotions_CZ', 'looks_techniques','art_styles'],
             //holds the guiding prompt for each dialogue stage named by stage id (such that it can be called as prompt[stage])
             1: ['Buďme konkrétnější. Možností, co na plátně dělat, je nepřeberné množství. Můžete dát přednost výrazným barvám olejové barvy nebo jemnějšímu pojetí kresby tužkou. Technické náčrty a mozaiky však nejsou ze stolu! Každá forma má své kouzlo a všechny jsou vám k dispozici. A teď, který to bude?'],
             2: ['Jakmile víme, jak k uměleckému dílu přistupovat, můžeme je začít vyplňovat. Myslete na věci, postavy - opravdu cokoli. Renesanční umělecká díla jsou často plná lidí, abstraktní umělecká díla jsou plná tvarů a barev a některá mohou být naplněna prázdnotou. Pokračuj, sni pryč:'],
@@ -179,7 +210,7 @@ var Prompts = {
         medium: 'Die erste Entscheidung, die jeder Künstler treffen muss, ist die Wahl des Mediums: Was für ein Kunstwerk soll es werden? Jede Auswahl hat ihre eigenen Besonderheiten und führt Sie auf einen etwas anderen kreativen Weg. Welche davon ist Ihre Berufung?',
         painting: {
             //lookup holds the hint cloud variable for each stage ordered by stage id
-            lookup: ['painting_types_DE', 'painting_content', 'painting_setting','emotions', 'looks_techniques','art_styles'],
+            lookup: ['painting_types_DE', 'painting_content_DE', 'painting_setting_DE','emotions_DE', 'looks_techniques','art_styles'],
             //holds the guiding prompt for each dialogue stage named by stage id (such that it can be called as prompt[stage])
             1: ['Lasst uns genauer werden. Es gibt unendlich viele Möglichkeiten, was man auf einer Leinwand machen kann. Vielleicht bevorzugst du die ausdrucksstarken Farben von Ölfarbe oder den sanfteren Ansatz von Bleistiftzeichnungen. Technische Skizzen und Mosaike sind jedoch nicht vom Tisch! Jede Form hat ihre Magie und alle stehen Ihnen zur Verfügung. Nun, welches wird es sein?'],
             2: ['Sobald wir wissen, wie wir uns dem Kunstwerk nähern, können wir damit beginnen, es auszufüllen. Denken Sie an Dinge, Charaktere – wirklich alles. Renaissance-Kunstwerke sind oft voller Menschen, abstrakte Kunstwerke sind voller Formen und Farben, und einige können einfach mit Leere gefüllt sein. Los, träume davon:'],

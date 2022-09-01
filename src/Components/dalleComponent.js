@@ -75,7 +75,7 @@ class DalleComponent extends React.Component {
         return(
             <div>
 
-            <h3>{this.props.text}</h3>
+            <h3>{this.props.langText}</h3>
             
             {
                 //hide the Get Result button after the query has been sent

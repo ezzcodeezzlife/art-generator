@@ -4,6 +4,7 @@ import Prompt from "../Components/prompt";
 import Link from 'next/link';
 import Router, { withRouter } from 'next/router'
 import { useState } from "react";
+import { Facts, Prompts } from '../Components/dataFile';
 
 const { responses, assembleResponse, storeResponse, assembleFinalDalle } = require('../Components/assembler_Obj');
 
@@ -80,6 +81,7 @@ const { responses, assembleResponse, storeResponse, assembleFinalDalle } = requi
         this.setState({stage: 0, medium: "", query: "", dalleInput: "", language: 'ENG'});
     } 
 
+
     //increase value of current stage by 1, and update the text and buttons accordingly
     incrementStage = () => {
         let currentStage = this.state.stage;
@@ -126,8 +128,19 @@ const { responses, assembleResponse, storeResponse, assembleFinalDalle } = requi
             storeResponse(userInput, this.state.stage, responses, this.state.medium, this.state.language);
             if(this.state.language !== 'ENG'){
                 //if prefered language is DE/CZ, also store english version of userInput
-                //TODO: english input
-                storeResponse(userInput, this.state.stage, responses, this.state.medium, 'ENG');
+                //if prefered language is DE/CZ, also store english version of userInput
+                //get stageName of hintcloud in preferred language (e.g. painting_types_DE)
+                let stageName = Prompts[this.state.language][this.state.medium].lookup[String(this.state.stage-1)];
+                console.log(stageName, Facts[stageName]);
+                //get index of DE/CZ input in its hintcloud array
+                let idx = Facts[stageName].findIndex(element => element === userInput);
+                console.log(idx);
+                //get stageName of english version of the same hintcloud
+                let stageNameENG = Prompts['ENG'][this.state.medium].lookup[String(this.state.stage-1)];
+                //get current input in english
+                let inputENG = Facts[stageNameENG][idx];
+                storeResponse(inputENG, this.state.stage, responses, this.state.medium, 'ENG');
+                console.log(responses['ENG']);
             }
         }
 
@@ -163,13 +176,22 @@ const { responses, assembleResponse, storeResponse, assembleFinalDalle } = requi
             storeResponse(input, this.state.stage, responses, this.state.medium, this.state.language);
             if(this.state.language !== 'ENG'){
                 //if prefered language is DE/CZ, also store english version of userInput
-                //TODO: english input
-                storeResponse(input, this.state.stage, responses, this.state.medium, 'ENG');
+                //get stageName of hintcloud in preferred language (e.g. painting_types_DE)
+                let stageName = Prompts[this.state.language][this.state.medium].lookup[String(this.state.stage-1)];
+                //get index of DE/CZ input in its hintcloud array
+                let idx = Facts[stageName].findIndex(element => element === input);
+                //get stageName of english version of the same hintcloud
+                let stageNameENG = Prompts['ENG'][this.state.medium].lookup[String(this.state.stage-1)];
+                //get current input in english
+                let inputENG = Facts[stageNameENG][idx];
+                storeResponse(inputENG, this.state.stage, responses, this.state.medium, 'ENG');
+                console.log(responses['ENG']);
             }
 
-            let dalleInput = assembleResponse(responses, this.state.medium, this.state.language);
+            let dalleInput = assembleResponse(responses, this.state.medium, 'ENG');
+            let langPrompt = assembleResponse(responses, this.state.medium, this.state.language);
             this.state.dalleInput = dalleInput;
-            assembleFinalDalle(dalleInput, this.state.language);
+            assembleFinalDalle(dalleInput, langPrompt, this.state.language);
 
         }
     }

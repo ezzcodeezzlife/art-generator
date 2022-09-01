@@ -17,7 +17,12 @@ const { Facts } = require('../Components/dataFile.js');
  class LoadingPage extends React.Component {
 
     state = {
-        funFact: Facts.funFacts[finalDalleAssembled.language][0]
+        funFact: Facts.funFacts[finalDalleAssembled.language][0],
+        headings: {
+            ENG: 'Creating your new artwork:',
+            CZ: 'Tvé dílo se vytváří:',
+            DE: 'Erstellen Sie Ihr neues Kunstwerk:'
+        }
     }
 
     componentDidMount() {
@@ -38,9 +43,9 @@ const { Facts } = require('../Components/dataFile.js');
 
         return(
             <div>
-               <h1>Creating your new artwork: </h1>
+               <h1> {this.state.headings[finalDalleAssembled.language]} </h1>
 
-                <DalleComponent text={finalDalleAssembled.textENG}/>
+                <DalleComponent text={finalDalleAssembled.textENG} langText={finalDalleAssembled.textDECZ}/>
 
                <h3 id="fact"> { this.state.funFact } </h3>
 

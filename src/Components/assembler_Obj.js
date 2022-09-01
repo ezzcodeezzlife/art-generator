@@ -138,17 +138,19 @@ var responses = {
 
 var finalDalleAssembled = {
     language: 'ENG',
-    textENG: "ENG prompt",
-    textDECZ: 'DE/CZ prompt',
+    textENG: "dalle ENG prompt",
+    textDECZ: 'language preferrence prompt',
 };
 
-function assembleFinalDalle(text, language) {
+function assembleFinalDalle(text, langText, language) {
     if(language !== 'ENG'){
         finalDalleAssembled.textENG = text;
+        finalDalleAssembled.textDECZ = langText;
         finalDalleAssembled.language = language;
     }
     else {
         finalDalleAssembled.textENG = text;
+        finalDalleAssembled.textDECZ = text;
     }
 }
 
@@ -184,6 +186,9 @@ function storeResponse(userInput, stage, responses, medium, language) {
      * medium: selected art medium
      * language: language preference being used
      */
+    if (typeof userInput === 'undefined'){
+        userInput = ''
+    }
     if (language === 'ENG') {
         if(medium === "painting") {
             if (stage == 1) 

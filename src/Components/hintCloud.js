@@ -11,8 +11,6 @@ import { Facts, Prompts } from './dataFile';
  * Based on stage of the dialogue, different array is used, from which
  * random words are selected to be shown.
  * 
- * 
- * DUMMY COMMENT FOR TESTING GIT
  */
 
 //TODO: reset hint cloud with each stage change
@@ -60,8 +58,10 @@ import { Facts, Prompts } from './dataFile';
         //create a <p> element for each hint
 
         this.state.current_stage = this.props.stage;
+
         // Shuffle array
-        const shuffled = this.getStage(this.props.medium, this.props.stage, this.props.language ).sort(() => 0.5 - Math.random());
+        let arrCopy = [...this.getStage(this.props.medium, this.props.stage, this.props.language)];
+        const shuffled = arrCopy.sort(() => 0.5 - Math.random());
 
         // Get sub-array of first n elements after shuffled
         let selected = shuffled.slice(0, this.state.NUM_FACTS);
