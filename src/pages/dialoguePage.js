@@ -103,7 +103,13 @@ const { responses, assembleResponse, storeResponse, assembleFinalDalle } = requi
          */
         if(this.state.stage !== 0) {
             let userInput = document.querySelector('#dialogue-input').value;
-            storeResponse(userInput, this.state.stage, responses, this.state.medium);
+            //store response in prefered language
+            storeResponse(userInput, this.state.stage, responses, this.state.medium, this.state.language);
+            if(this.state.language !== 'ENG'){
+                //if prefered language is DE/CZ, also store english version of userInput
+                //TODO: english input
+                storeResponse(userInput, this.state.stage, responses, this.state.medium, 'ENG');
+            }
         }
         
         //empty the input field
@@ -128,11 +134,17 @@ const { responses, assembleResponse, storeResponse, assembleFinalDalle } = requi
         //get text from final input stage and assemble it into final query for dalle
         if(this.state.stage == this.state.numStages - 1) {
             let input = document.querySelector('#dialogue-input').value;
-            storeResponse(input, this.state.stage, responses, this.state.medium);
-            
-            let dalleInput = assembleResponse(responses, this.state.medium);
+            //store response in prefered language
+            storeResponse(input, this.state.stage, responses, this.state.medium, this.state.language);
+            if(this.state.language !== 'ENG'){
+                //if prefered language is DE/CZ, also store english version of userInput
+                //TODO: english input
+                storeResponse(input, this.state.stage, responses, this.state.medium, 'ENG');
+            }
+
+            let dalleInput = assembleResponse(responses, this.state.medium, this.state.language);
             this.state.dalleInput = dalleInput;
-            assembleFinalDalle(dalleInput);
+            assembleFinalDalle(dalleInput, this.state.language);
 
         }
     }

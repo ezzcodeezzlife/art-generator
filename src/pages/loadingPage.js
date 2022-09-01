@@ -17,7 +17,7 @@ const { Facts } = require('../Components/dataFile.js');
  class LoadingPage extends React.Component {
 
     state = {
-        funFact: Facts.funFacts[0]
+        funFact: Facts.funFacts[finalDalleAssembled.language][0]
     }
 
     componentDidMount() {
@@ -27,7 +27,7 @@ const { Facts } = require('../Components/dataFile.js');
     updateFact = () => {
         //every 5 seconds, update the fact
         setInterval(() => {
-            let randomFact = Facts.funFacts[Math.floor(Math.random() * Facts.funFacts.length)];
+            let randomFact = Facts.funFacts[finalDalleAssembled.language][Math.floor(Math.random() * Facts.funFacts[finalDalleAssembled.language].length)];
             this.setState({funFact: randomFact});
             this.state.funFact = randomFact;
         }, 8000)
@@ -40,7 +40,7 @@ const { Facts } = require('../Components/dataFile.js');
             <div>
                <h1>Creating your new artwork: </h1>
 
-                <DalleComponent text={finalDalleAssembled.text}/>
+                <DalleComponent text={finalDalleAssembled.textENG}/>
 
                <h3 id="fact"> { this.state.funFact } </h3>
 
