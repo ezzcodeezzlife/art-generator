@@ -15,6 +15,11 @@ class DalleComponent extends React.Component {
         final_image_src: "",
     }
 
+    componentDidMount() {
+        this.setState({token: 'sess-ACAi73JHw0p4uzU8M4kzAT1lZm7DVamU6PeyUvkI'})
+        this.setState({query: this.props.text})
+    }
+
     getDalle2 = () => {
 
         if(this.state.query != "" && this.state.token != "") {
@@ -49,7 +54,7 @@ class DalleComponent extends React.Component {
         this.setState({image_selected: true});
         this.setState({final_image_src: e.target.src});
 
-        e.target.transform = "scale(1.3)";
+        e.target.transform = "scale(1.2)";
         e.target.style.transition = "transform 0.5s ease";
         e.target.className = "finalChoice";
         console.log(e.target.src)
@@ -71,21 +76,6 @@ class DalleComponent extends React.Component {
             <div>
 
             <h3>{this.props.text}</h3>
-            {
-                //hide the input field after the query is submitted and loading
-
-                this.state.loading == false && this.state.error == false && this.state.result_provided == false ? 
-                <input className="input"
-                    id="query"
-                    type="text"
-                    placeholder={this.props.text}
-                    value={this.state.query}
-                    onChange={(e) => {
-                        this.setState({token: 'sess-ACAi73JHw0p4uzU8M4kzAT1lZm7DVamU6PeyUvkI'})
-                        this.setState({query: e.target.value})}
-                        }
-                /> : null
-            }
             
             {
                 //hide the Get Result button after the query has been sent
@@ -102,11 +92,11 @@ class DalleComponent extends React.Component {
            }  */}
 
             {
-                this.state.error ? (
-                <p>
-                    your query could not be processed at this time
-                </p>
-            ) : (<></>)}
+                this.state.error ? 
+                <p> your query could not be processed at this time </p>
+                : 
+                null
+            }
 
             {this.state.loading && <p>Loading</p>}
 

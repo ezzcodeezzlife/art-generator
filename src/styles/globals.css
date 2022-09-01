@@ -41,6 +41,26 @@ p {
   max-width: 60%;
 }
 
+li {
+  background-color: rgba(180, 180, 180, 0.3);
+  list-style: none;
+  display: inline-block;
+  width: 40%;
+  border-radius: 2%;
+  padding: 4%;
+}
+
+li img {
+  width: 100%;
+  height: auto;
+  border-radius: 1%;
+}
+
+li h3 {
+  width: 100%;
+  text-align: center;
+}
+
 .btn {
   background-color: rgba(39, 39, 39, 0.1);
   border-radius: 8px;
@@ -215,4 +235,34 @@ code {
 
 #final-goodbye {
   display: none;
+}
+
+#canvas-container {
+  width: 37%;
+  text-align:center;
+  border: 2px solid white;
+  border-radius: 30px;
+  padding: 0px;
+  margin: auto;
+}
+
+.sigCanvas{
+  border-radius: 30px;
+  
+  padding: 0px;
+  margin: auto;
+  
+  
+}
+
+.final-image {
+  z-index: 1;
+}
+
+.signature-image {
+  z-index: 2;
+  position: relative;
+  left: 70%;
+  bottom: 7em;
+  width: 5em;
 }

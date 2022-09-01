@@ -4,8 +4,32 @@ import Router, { withRouter } from 'next/router'
 
 class FinalPublishing extends React.Component {
 
-    state={
-        signatureUrl: "",
+    sigPad = {}
+
+    clear = () => {
+      this.sigPad.clear()
+    }
+
+    saveSignature = () => {
+        document.querySelector(".signatureScheme").style.display = "none";
+        //document.querySelector(".publish-buttons").style.display = "block";
+        document.querySelector("#gallery-publish").style.display = "block";
+
+        //show signature on image
+        let finalImage = document.createElement("img");
+        finalImage.src = this.props.finalImage;
+        finalImage.setAttribute("className", "final-image");
+
+        //place final image on canvas
+        document.querySelector("#gallery-publish").appendChild(finalImage);
+
+        //place signature image on canvas
+        let signatureImage = document.createElement("img");
+        //set source as the signature image
+        signatureImage.src = this.sigPad.getTrimmedCanvas().toDataURL('image/png');
+        signatureImage.setAttribute("className", "signature-image");
+        
+        document.querySelector("#gallery-publish").appendChild(signatureImage);
     }
     
     //add photo to gallery database, show the gallery on the page
@@ -15,6 +39,8 @@ class FinalPublishing extends React.Component {
         let artpiece = {
           img_link: this.props.finalImage,
           content: this.props.query,
+          //add source of signature
+          signature: this.sigPad.getTrimmedCanvas().toDataURL('image/png'),
           createdAt: new Date().toISOString()
         }
       
@@ -43,30 +69,24 @@ class FinalPublishing extends React.Component {
       }
     
     hideSignature = () => {
-        document.querySelector("#canvas-container").style.display = "none";
+        document.querySelector(".signatureScheme").style.display = "none";
         //document.querySelector(".publish-buttons").style.display = "block";
         document.querySelector('#gallery-publish').style.display = 'block';
     }
 
-    showEmailInput = () => {
-        document.querySelector('.email-input').style.display = "block";
-        document.querySelector('.email-buttons').style.display = "none";
-    }
+    // showEmailInput = () => {
+    //     document.querySelector('.email-input').style.display = "block";
+    //     document.querySelector('.email-buttons').style.display = "none";
+    // }
 
-    hideEmailInput = () => {
-        document.querySelector('.email-buttons').style.display = "none";
-        document.querySelector('#gallery-publish').style.display = "block";
-    }
+    // hideEmailInput = () => {
+    //     document.querySelector('.email-buttons').style.display = "none";
+    //     document.querySelector('#gallery-publish').style.display = "block";
+    // }
 
-    sendEmail = () => {
-        document.querySelector('#gallery-publish').style.display = 'block';
-    }
-
-    publishToGallery = () => {
-        //TODO: send photo to DB and to gallery
-        document.querySelector('#gallery-publish').style.display = 'none';
-        document.querySelector('#final-goodbye').style.display = 'block';
-    }
+    // sendEmail = () => {
+    //     document.querySelector('#gallery-publish').style.display = 'block';
+    // }
 
     cancelPublish = () => {
         document.querySelector('#gallery-publish').style.display = 'none';
@@ -74,31 +94,30 @@ class FinalPublishing extends React.Component {
     }
 
     render() {
+       
         return (
-            <div >
-                <div id="canvas-container">
+            <div>
+                <div className="signatureScheme">
                     <h1>Add a signature to your artwork</h1>
-                    <div >
-                        {/*
-                        TODO: send signatures using https://www.npmjs.com/package/react-signature-canvas
-                        TODO: add signature to the database
-                        TODO: add signature to final photo
-                        */}
-                        <SignatureCanvas ref={(ref) => { this.sigCanvas = ref }} penColor='black' backgroundColor="white"
-                        canvasProps={{width: 400, height: 250, className: 'sigCanvas', display: "inline" }} />    
-                        <button className="btn" onClick={this.hideSignature}>
+                    <div id="canvas-container">
+                        <div > 
+                            <SignatureCanvas canvasProps={{width: 400, height: 250, className: 'sigCanvas'}}
+                            ref={(ref) => { this.sigPad = ref }} penColor='black' />
+                        </div>   
+                    </div>
+                        <button className="btn" onClick={this.saveSignature}>
                             Add Signature 
                         </button> 
+                        <button className="btn" onClick={this.clear}>
+                            Clear Signature
+                        </button>
                         <button className="btn" onClick={this.hideSignature}>
                             Skip 
                         </button> 
-                        <img>
-                        </img>		
-                    </div> 
                 </div>
 
-                {/* TODO: send the photo through email */}
-                {/* <div className="publish-buttons">
+                {/* TODO: send the photo through email
+                <div className="publish-buttons">
                     <div className="email-buttons">
                         <p className="email-prompt">Do you wish to receive your artwork through email?</p>
                         <button className="btn email-prompt" onClick={this.showEmailInput}>Send to Email</button>
@@ -125,7 +144,8 @@ class FinalPublishing extends React.Component {
                         You are now a real artist, collaborativelly creating a new art form with the brush of artificial intellignce.
                     </h3>
                 </div>
-                         
+
+                     
             </div>
         )
     }
