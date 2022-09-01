@@ -1,4 +1,5 @@
 import React from "react";
+import FinalPublishing from "./finalPublishing";
 
 class DalleComponent extends React.Component {
 
@@ -10,18 +11,9 @@ class DalleComponent extends React.Component {
         error: false,
         result_provided: false,
         result_id: 0,
+        image_selected: false,
+        final_image_src: "",
     }
-    
-    // selects which image you picked and hides the rest, while enlarging the remaining one and adding finalStyling component
-    displayFavorite = (e) => {
-        console.log(e.target.src)
-        var choices = document.querySelectorAll('img');
-        for(let i = 0; i < choices.length; i++){
-            if(choices[i].src !== e.target.src) {
-              choices[i].style.display = "none"
-            }    
-        }
-      }
 
     getDalle2 = () => {
 
@@ -51,6 +43,27 @@ class DalleComponent extends React.Component {
             this.setState({error: true});
         }
     }
+    
+    // selects which image you picked and hides the rest, while enlarging the remaining one and adding finalStyling component
+    displayFavorite = (e) => {
+        this.setState({image_selected: true});
+
+        e.target.transform = "scale(1.3)";
+        e.target.style.transition = "transform 0.5s ease";
+        e.target.className = "finalChoice";
+        console.log(e.target.src)
+        var choices = document.querySelectorAll('img');
+        for(let i = 0; i < choices.length; i++){
+            if(choices[i].src !== e.target.src) {
+              choices[i].remove();
+            }    
+        }
+        
+        //remove other elements from page
+        document.querySelector('h1').style.display = "none";
+        document.querySelector('#fact').style.display = "none";
+
+      }
 
     render() {
         return(
@@ -111,6 +124,11 @@ class DalleComponent extends React.Component {
                     );
                 })}
             </div>
+
+            {
+                this.state.image_selected ? 
+                <FinalPublishing finalImage={}></FinalPublishing> : null
+            }
         </div>
         )
     }

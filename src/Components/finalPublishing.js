@@ -69,7 +69,7 @@ class FinalPublishing extends React.Component {
                     </div>
 
                     <form className="email-input">
-                        <input className="input" type="email" placeholder="Enter email"></input>
+                        <input className="input" type="text" placeholder="Enter email"></input>
                         <button className="btn" onClick={this.sendEmail}>Submit</button>
                     </form>
                 </div>
