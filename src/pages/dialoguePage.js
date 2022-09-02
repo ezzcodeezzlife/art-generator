@@ -222,8 +222,10 @@ const { responses, assembleResponse, storeResponse, assembleFinalDalle } = requi
                     : 
 
                     <div>
-                        <p id="assembled_query"></p>
-                        <p id="current_selection"></p>
+                        <div id="query_div">
+                            <p className="ongoing_query" id="assembled_query"></p>
+                            <p className="ongoing_query" id="current_selection"></p>
+                        </div>
 
                         <input className="btn" id="btn-next-stage" type='submit'
                             onClick= { this.incrementStage }

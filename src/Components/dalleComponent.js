@@ -54,16 +54,14 @@ class DalleComponent extends React.Component {
         this.setState({image_selected: true});
         this.setState({final_image_src: e.target.src});
 
-        e.target.transform = "scale(1.2)";
         e.target.style.transition = "transform 0.5s ease";
+        e.target.transform = "scale(1.1)";
         e.target.className = "finalChoice";
         console.log(e.target.src)
-        var choices = document.querySelectorAll('img');
-        for(let i = 0; i < choices.length; i++){
-            if(choices[i].src !== e.target.src) {
-              choices[i].remove();
-            }    
-        }
+        document.querySelectorAll('img').forEach((element) => {
+            element.className = "imgNotSelected";
+            
+        })
         
         //remove other elements from page
         document.querySelector('h1').style.display = "none";

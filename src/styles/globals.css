@@ -44,10 +44,12 @@ p {
 li {
   background-color: rgba(180, 180, 180, 0.3);
   list-style: none;
-  display: inline-block;
-  width: 40%;
+  display: block;
+  margin: auto;
+  margin-bottom: 5%;
+  width: 35%;
   border-radius: 2%;
-  padding: 4%;
+  padding: 3%;
 }
 
 li img {
@@ -259,10 +261,29 @@ code {
   z-index: 1;
 }
 
+.imgNotSelected {
+  z-index: 2;
+  display: none;
+}
+
 .signature-image {
   z-index: 2;
   position: relative;
   left: 70%;
   bottom: 7em;
   width: 5em;
+}
+
+#query_div {
+  text-align: center;
+}
+
+#current_selection {
+  margin-left: 1%;
+  color: aqua;
+}
+
+.ongoing_query {
+  display: inline-block;
+  margin: auto;
 }

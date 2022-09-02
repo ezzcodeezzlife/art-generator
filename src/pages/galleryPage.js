@@ -36,21 +36,13 @@ export default function Gallery({ art }) {
     }
 };
 
-  const removeImg = (e) => {
-    //remove image element from DOM
-    document.querySelector('img').style.display = 'none';
-
-  }
-
   return (
     <div>
-
-      <h1>The gallery:</h1>
-      <img src='https://cdn.sstatic.net/Img/teams/teams-illo-free-sidebar-promo.svg?v=47faa659a05e'></img>
       <ul>
+        {/* show a random image, change images ever  */}
         {art.map((artpiece) => (
           <li>
-            <img className='final-image' src={artpiece.img_link} onClick={e => removeImg(e, 'src')} />
+            <img className='final-image' src={artpiece.img_link} />
             <img className='signature-image' src={artpiece.signature}></img>
             <h3>{artpiece.content}</h3>
           </li>
