@@ -142,16 +142,10 @@ var finalDalleAssembled = {
     textDECZ: 'language preferrence prompt',
 };
 
-function assembleFinalDalle(text, langText, language) {
-    if(language !== 'ENG'){
-        finalDalleAssembled.textENG = text;
-        finalDalleAssembled.textDECZ = langText;
-        finalDalleAssembled.language = language;
-    }
-    else {
-        finalDalleAssembled.textENG = text;
-        finalDalleAssembled.textDECZ = text;
-    }
+function assembleFinalDalle(text, langText) {
+    finalDalleAssembled.textENG = text;
+    finalDalleAssembled.textDECZ = langText;
+   
 }
 
 //Function to assemble full response (input int DALLE)

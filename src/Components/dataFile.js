@@ -30,6 +30,30 @@ var Facts = {
         'Viele Künstler, die jetzt mit Computern arbeiten, integrieren diese Technologie in ihre Praxis als nur ein Werkzeug unter vielen, das sie austauschbar verwenden können. Viele definieren sich nicht mehr als Praktiker eines bestimmten Mediums.'],
     },
 
+
+    stage_names: {
+        ENG: { 
+            medium: 'Select a Medium',
+            painting: ['Painting Types', 'Painting Content', 'Painting Setting','Emotions', 'Looks and Techniques','Art Styles'],
+            sculpture: ['Sculpture Type','Sculpture Content', 'Forms', 'Emotions', 'Looks', 'Art Styles'],
+            photography: ['Photo Content', 'Photo Setting', 'Camera Angle', 'Camera Settings', 'Lighting', 'Emotions']
+        },
+
+        CZ: { 
+            medium: 'Vyberte médium',
+            painting: ['Typy malby', 'Obsah malby', 'Prostředí malby','Emoce', 'Vzhled a technika','Umělecké styly'],
+            sculpture: ['Typ sochy', 'Obsah sochy', 'Formy', 'Emoce', 'Vzhled', 'Umělecké styly'],
+            photography: ['Photo Content', 'Photo Setting', 'Camera Angle', 'Camera Settings', 'Lighting', 'Emotions']
+
+        },
+        DE: { 
+            medium: 'Auswählen und Mittel',
+            painting: ['Malarten', 'Malinhalt', 'Maleinstellung', 'Emotionen', 'Looks und Techniken', 'Kunststile'],
+            sculpture: ['Sculpture Type','Sculpture Content', 'Forms', 'Emotions', 'Looks', 'Art Styles'],
+            photography: ['Photo Content', 'Photo Setting', 'Camera Angle', 'Camera Settings', 'Lighting', 'Emotions']
+        }
+    },
+
     emotions: ['light', 'peaceful', 'calm', 'serene', 'soothing', 'relaxed',
     'comforting', 'cosy', 'tranquil', 'quiet', 'delicate', 'subtle', 'mild', 'ethereal', 'elegant',
     'tender', 'soft', 'light', 'bright', 'vibrant', 'dynamic', 'spirited','vivid', 'lively', 'energetic', 
