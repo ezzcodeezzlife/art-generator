@@ -76,7 +76,8 @@ class DalleComponent extends React.Component {
         this.setState({final_image_src: e.target.src});
         this.setState({selected_img_pos: e.target.value});
 
-        console.log(e.target.value);
+        console.log(`value: ${e.target.value}`);
+        console.log(this.state.selected_img_pos);
 
         e.target.style.transition = "transform 0.5s ease";
         e.target.transform = "scale(1.1)";
@@ -126,12 +127,13 @@ class DalleComponent extends React.Component {
 
             <div className="grid">
                 
-                {this.state.result.map((result) => { 
+                {this.state.result.map((result, index) => { 
                     return (
                         <div className="card">
                             <img
                                 src={result.generation.image_path} 
                                 alt="" 
+                                value={index}
                                 className="imgPreview"
                                 onClick={e => this.displayFavorite(e, 'src')}
                             />

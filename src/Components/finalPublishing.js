@@ -39,12 +39,17 @@ class FinalPublishing extends React.Component {
         let artpiece = {
           task_id: this.props.task_id,
           selected_img_pos: this.props.selected_img_pos,
-          content: this.props.query,
-          //add source of signature
           signature: this.sigPad.getTrimmedCanvas().toDataURL('image/png'),
-          createdAt: new Date().toISOString()
-
+          content: this.props.query,
           //TODO: add email and name
+          name: "not yet added",
+          email: "not yet added",
+          //add source of signature
+          created_at: new Date().toISOString(),
+          currently_selected: false,
+          //TODO: get value of selected img
+          selected_pos: 1
+
         }
       
         //save the artpiece

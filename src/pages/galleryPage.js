@@ -2,6 +2,8 @@ const { connectToDatabase } = require('../../utils/connectMongo');
 
 export default function Gallery({ art }) {
 
+  const token = 'sess-ACAi73JHw0p4uzU8M4kzAT1lZm7DVamU6PeyUvkI';
+
   const handlePost = async (e) => {
     e.preventDefault();
 
@@ -36,12 +38,12 @@ export default function Gallery({ art }) {
     }
 };
 
-  const getTask = (task_id) => {
+  let getTask = (task_id) => {
     // task-7EDiVVlG84i9cZswtT2kPYFJ
     // task-7EDiVVlG84i9cZswtT2kPYFJ
     // task-7EDiVVlG84i9cZswtT2kPYFJ
     // testing what the task id returns
-    fetch(`/api/dalleTask?k=${this.state.token}&q=${task_id}`, {
+    fetch(`/api/dalleTask?k=${token}&q=task-7EDiVVlG84i9cZswtT2kPYFJ`, {
         method: "GET",
         headers: {
             'Content-Type': 'application/json'
@@ -57,7 +59,7 @@ export default function Gallery({ art }) {
   return (
     <div>
       <ul>
-        <button onClick={getTask()}></button>
+        <button onClick={getTask}></button>
         {/* show a random image, change images ever  */}
         {art.map((artpiece) => (
           <li>
@@ -85,6 +87,9 @@ export async function getServerSideProps() {
       .limit(20)
       .toArray();
   
+    const artJSON = JSON.parse(JSON.stringify(art));
+    //get the 
+    
     return {
       props: {
         art: JSON.parse(JSON.stringify(art)),
