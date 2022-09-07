@@ -150,7 +150,7 @@ class DalleComponent extends React.Component {
 
             {
                 this.state.image_selected ? 
-                <FinalPublishing finalImage={ this.state.final_image_src } query={ this.state.query } task_id= { this.state.task_id } selected_img_pos={ this.state.selected_img_pos }></FinalPublishing> : null
+                <FinalPublishing finalImage={ this.state.final_image_src } query={ this.state.query } task_id= { this.state.task_id } selected_img_pos={ this.state.selected_img_pos } lang={this.props.lang}></FinalPublishing> : null
             }
         </div>
         )

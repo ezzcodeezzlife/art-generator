@@ -4,6 +4,56 @@ import Router, { withRouter } from 'next/router'
 
 class FinalPublishing extends React.Component {
 
+    state = {
+        signatureText: {
+            ENG: 'Add a signature to your artwork',
+            CZ: 'Přidat k dílu podpis',
+            DE: 'Fügen Sie Ihrem Kunstwerk eine Signatur hinzu'
+        },
+        signatureAdd: {
+            ENG: 'Add Signature',
+            CZ: 'Přidat podpis',
+            DE: 'Signatur hinzufügen'
+        },
+        signatureClear: {
+            ENG: 'Clear Signature',
+            CZ: 'Vymazat podpis',
+            DE: 'Signatur löschen'
+        },
+        skip: {
+            ENG: 'Skip',
+            CZ: 'Přeskočit',
+            DE: 'Überspringen'
+        },
+        publishQ: {
+            ENG: 'Do you want to display your artwork in the Albertina Gallery among the other great artists?',
+            CZ: 'Chcete své dílo vystavit v Galerii Albertina mezi uznávanými umělci?',
+            DE: 'DE(Chcete své dílo vystavit v Galerii Albertina mezi uznávanými umělci?)'
+        },
+        DoPublish: {
+            ENG: 'Publish to Gallery',
+            CZ: 'Vystavit v galerii',
+            DE: 'DE Vystavit v galerii'
+        },
+        NotPublish: {
+            ENG: 'Do not publish',
+            CZ: 'Nevystavovat',
+            DE: 'DE Nevystavovat'
+        },
+        thanks: {
+            ENG: 'Thank you for your contribution!',
+            CZ: 'Děkujeme za příspěvek!',
+            DE: 'DE Děkujeme za příspěvek!'
+        },
+        goodbye: {
+            ENG: 'You are now a real artist, collaborativelly creating a new art form with the brush of artificial intellignce.',
+            CZ: 'Nyní jste skutečným umělcem, který společně vytváří novou uměleckou formu pomocí štětce umělé inteligence.',
+            DE: 'DE Du bist ein Kunstmacher'
+        },
+
+        
+    }
+
     sigPad = {}
 
     clear = () => {
@@ -106,7 +156,7 @@ class FinalPublishing extends React.Component {
         return (
             <div>
                 <div className="signatureScheme">
-                    <h1>Add a signature to your artwork</h1>
+                    <h1>{this.state.signatureText[this.props.lang]}</h1>
                     <div id="canvas-container">
                         <div > 
                             <SignatureCanvas canvasProps={{width: 400, height: 250, className: 'sigCanvas'}}
@@ -114,13 +164,13 @@ class FinalPublishing extends React.Component {
                         </div>   
                     </div>
                         <button className="btn" onClick={this.saveSignature}>
-                            Add Signature 
+                            {this.state.signatureAdd[this.props.lang]}
                         </button> 
                         <button className="btn" onClick={this.clear}>
-                            Clear Signature
+                            {this.state.signatureClear[this.props.lang]}
                         </button>
                         <button className="btn" onClick={this.hideSignature}>
-                            Skip 
+                            {this.state.skip[this.props.lang]}
                         </button> 
                 </div>
 
@@ -139,17 +189,17 @@ class FinalPublishing extends React.Component {
                 </div> */}
 
                 <div id='gallery-publish'>
-                    <p>Do you want to display your artwork in the Albertina Gallery among the other great artists?</p>
-                    <button className="btn" onClick={this.addArt}>Publish to Gallery</button>
-                    <button className="btn" onClick={this.cancelPublish}>Do not publish</button>
+                    <p>{this.state.publishQ[this.props.lang]}</p>
+                    <button className="btn" onClick={this.addArt}>{this.state.DoPublish[this.props.lang]}</button>
+                    <button className="btn" onClick={this.cancelPublish}>{this.state.NotPublish[this.props.lang]}</button>
                 </div>
 
                 <div id='final-goodbye'>
                     <h1>
-                        Thank you for your contribution!
+                        {this.state.thanks[this.props.lang]}
                     </h1>
                     <h3>
-                        You are now a real artist, collaborativelly creating a new art form with the brush of artificial intellignce.
+                        {this.state.goodbye[this.props.lang]}
                     </h3>
                 </div>
 
