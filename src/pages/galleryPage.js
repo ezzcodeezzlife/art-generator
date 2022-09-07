@@ -36,9 +36,28 @@ export default function Gallery({ art }) {
     }
 };
 
+  const getTask = (task_id) => {
+    // task-7EDiVVlG84i9cZswtT2kPYFJ
+    // task-7EDiVVlG84i9cZswtT2kPYFJ
+    // task-7EDiVVlG84i9cZswtT2kPYFJ
+    // testing what the task id returns
+    fetch(`/api/dalleTask?k=${this.state.token}&q=${task_id}`, {
+        method: "GET",
+        headers: {
+            'Content-Type': 'application/json'
+        },
+    })
+        .then(res => res.json())
+        .then((data) => {
+            //log the image path of the first result
+            console.log(data.result.generations.data[0].generation.image_path);
+        })
+  }
+
   return (
     <div>
       <ul>
+        <button onClick={getTask()}></button>
         {/* show a random image, change images ever  */}
         {art.map((artpiece) => (
           <li>

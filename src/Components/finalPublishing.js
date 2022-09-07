@@ -37,11 +37,14 @@ class FinalPublishing extends React.Component {
         e.preventDefault();
       
         let artpiece = {
-          img_link: this.props.finalImage,
+          task_id: this.props.task_id,
+          selected_img_pos: this.props.selected_img_pos,
           content: this.props.query,
           //add source of signature
           signature: this.sigPad.getTrimmedCanvas().toDataURL('image/png'),
           createdAt: new Date().toISOString()
+
+          //TODO: add email and name
         }
       
         //save the artpiece
@@ -66,7 +69,7 @@ class FinalPublishing extends React.Component {
             // set the error
             console.log("error");
         }
-      }
+    }
     
     hideSignature = () => {
         document.querySelector(".signatureScheme").style.display = "none";

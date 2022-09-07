@@ -109,24 +109,20 @@ const { responses, assembleResponse, storeResponse, assembleFinalDalle, finalDal
                 //if prefered language is DE/CZ, also store english version of userInput
                 //get stageName of hintcloud in preferred language (e.g. painting_types_DE)
                 let stageName = Prompts[this.state.language][this.state.medium].lookup[String(this.state.stage-1)];
-                console.log(stageName, Facts[stageName]);
                 //get index of DE/CZ input in its hintcloud array
                 let idx = Facts[stageName].findIndex(element => element === userInput);
-                console.log(idx);
                 //get stageName of english version of the same hintcloud
                 let stageNameENG = Prompts['ENG'][this.state.medium].lookup[String(this.state.stage-1)];
                 //get current input in english
                 let inputENG = Facts[stageNameENG][idx];
                 storeResponse(inputENG, this.state.stage, responses, this.state.medium, 'ENG');
-                console.log(responses['ENG']);
             }
         }
 
         //get assembled query so far, show it on page, clear #current_selection
         let assembledQuery = assembleResponse(responses, this.state.medium, this.state.language);
         document.querySelector('#assembled_query').innerHTML = assembledQuery;
-        console.log(assembledQuery);
-        
+
         //empty the input field
         document.querySelector('#current_selection').innerHTML = '';
 
@@ -138,7 +134,6 @@ const { responses, assembleResponse, storeResponse, assembleFinalDalle, finalDal
     selectMedium = (e) => {
         this.setState({medium: e.target.value});
         this.setState({stage: 1});
-        console.log(this.state.medium);
     }
 
     //get text from final input stage and assemble it into final query for dalle
@@ -158,7 +153,6 @@ const { responses, assembleResponse, storeResponse, assembleFinalDalle, finalDal
                 //get current input in english
                 let inputENG = Facts[stageNameENG][idx];
                 storeResponse(inputENG, this.state.stage, responses, this.state.medium, 'ENG');
-                console.log(responses['ENG']);
             }
 
             let dalleInput = assembleResponse(responses, this.state.medium, 'ENG');
