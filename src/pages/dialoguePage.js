@@ -40,7 +40,38 @@ const { responses, assembleResponse, storeResponse, assembleFinalDalle, finalDal
         query: "",
         dalleInput: "",
         timer: null,
-        language: finalDalleAssembled.language
+        language: finalDalleAssembled.language,
+        buttons: {
+            mediums: {
+                painting: {
+                    ENG: 'Painting',
+                    CZ: 'Malba',
+                    DE: 'Gemälde',
+                },
+                sculpture: {
+                    ENG: 'Sculpture',
+                    CZ: 'Socha',
+                    DE: 'Skulptur',
+                },
+                photography: {
+                    ENG: 'Photography',
+                    CZ: 'Fotografie',
+                    DE: 'Foto',
+                }
+
+            },
+            forward: {
+                ENG: 'Next',
+                CZ: 'Další',
+                DE: 'Nächste',
+            },
+
+            results: {
+                ENG: 'Finish',
+                CZ: 'Hotovo',
+                DE: 'Fertig',
+            }
+        }
     }
 
 
@@ -179,9 +210,9 @@ const { responses, assembleResponse, storeResponse, assembleFinalDalle, finalDal
                     this.state.stage === 0 ?
                     // Buttons to select a medium
                     <div className="div-medium">
-                        <button className="btn btn-medium" value={'painting'} onClick={e => this.selectMedium(e, 'value')}>Painting</button>
-                        <button className="btn btn-medium" value={'sculpture'} onClick={e => this.selectMedium(e, 'value')}>Sculpture</button>
-                        <button className="btn btn-medium" value={'photography'} onClick={e => this.selectMedium(e, 'value')}>Photography</button>
+                        <button className="btn btn-medium" value={'painting'} onClick={e => this.selectMedium(e, 'value')}>{this.state.buttons.mediums.painting[this.state.language]}</button>
+                        <button className="btn btn-medium" value={'sculpture'} onClick={e => this.selectMedium(e, 'value')}>{this.state.buttons.mediums.sculpture[this.state.language]}</button>
+                        <button className="btn btn-medium" value={'photography'} onClick={e => this.selectMedium(e, 'value')}>{this.state.buttons.mediums.photography[this.state.language]}</button>
                     </div>
                     
                     : 
@@ -194,7 +225,7 @@ const { responses, assembleResponse, storeResponse, assembleFinalDalle, finalDal
 
                         <input className="btn" id="btn-next-stage" type='submit'
                             onClick= { this.incrementStage }
-                            value = 'Next'
+                            value = {this.state.buttons.forward[this.state.language]}
                         />
                     </div>
                     
@@ -202,7 +233,7 @@ const { responses, assembleResponse, storeResponse, assembleFinalDalle, finalDal
                 
                 <Link href={'/loadingPage'}>
                     <button className="btn" onClick={this.finishAssembling} id="btn-result">
-                        Results 
+                        {this.state.buttons.results[this.state.language]}
                     </button>
                 </Link>
                 

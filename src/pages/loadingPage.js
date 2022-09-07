@@ -45,7 +45,7 @@ const { Facts } = require('../Components/dataFile.js');
             <div>
                <h1> {this.state.headings[finalDalleAssembled.language]} </h1>
 
-                <DalleComponent text={finalDalleAssembled.textENG} langText={finalDalleAssembled.textDECZ}/>
+                <DalleComponent text={finalDalleAssembled.textENG} langText={finalDalleAssembled.textDECZ} lang={finalDalleAssembled.language}/>
 
                <h3 id="fact"> { this.state.funFact } </h3>
 

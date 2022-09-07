@@ -14,6 +14,12 @@ class DalleComponent extends React.Component {
         final_image_src: "",
         task_id: "",
         selected_img_pos: "",
+        button: {
+            ENG: 'Generate Artwork',
+            CZ: 'Vytvořit dílo',
+            DE: 'Generieren'
+        },
+
     }
 
     componentDidMount() {
@@ -106,7 +112,7 @@ class DalleComponent extends React.Component {
                 //hide the Get Result button after the query has been sent
 
                 this.state.loading == false && this.state.error == false && this.state.result_provided == false ?
-                <button className="btn" onClick={this.getDalle2}> Get Results! </button>
+                <button className="btn" onClick={this.getDalle2}> {this.state.button[this.props.lang]} </button>
                 : null
             }
 
