@@ -82,16 +82,19 @@ class DalleComponent extends React.Component {
         this.setState({final_image_src: e.target.src});
         this.setState({selected_img_pos: e.target.value});
 
-        console.log(`value: ${e.target.value}`);
+        console.log(`value: ${e.target.id}`);
         console.log(this.state.selected_img_pos);
 
-        e.target.style.transition = "transform 0.5s ease";
-        e.target.transform = "scale(1.1)";
-        e.target.className = "finalChoice";
-        console.log(e.target.src)
+        // e.target.style.transition = "transform 0.5s ease";
+        // e.target.transform = "scale(1.3)";
+        // e.target.className = "finalChoice";
+        // console.log(e.target.src)
+
         document.querySelectorAll('img').forEach((element) => {
-            element.className = "imgNotSelected";
-            
+            if(element.id != e.target.id) {
+                element.style.display = "none";
+                //element.className = "imgNotSelected";
+            }
         })
         
         //remove other elements from page
@@ -135,13 +138,14 @@ class DalleComponent extends React.Component {
                 
                 {this.state.result.map((result, index) => { 
                     return (
-                        <div className="card">
+                        //RODO. hide card
+                        <div className="card" onClick={this.displayFavorite}>
                             <img
+                                id={index}
                                 src={result.generation.image_path} 
                                 alt="" 
-                                value={index}
                                 className="imgPreview"
-                                onClick={e => this.displayFavorite(e, 'src')}
+                                
                             />
                         </div>
                     );

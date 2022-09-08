@@ -98,7 +98,7 @@ class FinalPublishing extends React.Component {
           created_at: new Date().toISOString(),
           currently_selected: false,
           //TODO: get value of selected img
-          selected_pos: 1
+          selected_pos: this.props.selected_img_pos,
 
         }
       
