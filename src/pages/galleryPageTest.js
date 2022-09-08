@@ -12,7 +12,15 @@ class GalleryPageTest extends React.Component {
     //get art
     componentDidMount () {
         this.getDBArt();
+        setTimeout(() => {
+            this.getAllArt();
+        }, 1000);
+        setTimeout(() => {
+            this.showArt();
+        }, 2000)
     }
+
+
 
     getDBArt = () => {
         //get the artwork saved in mongo DB
@@ -68,10 +76,8 @@ class GalleryPageTest extends React.Component {
     render() {
         return (
             <div>
-                <button onClick={this.getAllArt}>load art objects</button>
-                <button onClick={this.showArt}>show art objects</button>
                 <h1>Gallery Page Test</h1>
-                <input type="text"></input>
+                {/* <input type="text"></input> */}
             </div>
         )
     }
